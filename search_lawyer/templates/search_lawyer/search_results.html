@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Search Results{% endblock %}
+{% block content %}
+<h1 class="mb-4">Search Results</h1>
+
+
+{% if lawyers %}
+<div class="row">
+{% for lawyer in lawyers %}
+<div class="col-md-4 mb-4">
+<div class="card p-3 h-100">
+<h4>{{ lawyer.name }}</h4>
+<p class="mb-1"><strong>Type:</strong> {{ lawyer.get_lawyer_type_display }}</p>
+
+
+{% if lawyer.lawyer_type == 'solicitor' and lawyer.specialty %}
+<p class="mb-1"><strong>Specialty:</strong> {{ lawyer.get_specialty_display }}</p>
+{% endif %}
+
+
+{% if lawyer.lawyer_type == 'advocate' and lawyer.court_level %}
+<p class="mb-1"><strong>Court Level:</strong> {{ lawyer.get_court_level_display }}</p>
+{% endif %}
+
+
+<p><strong>Email:</strong> {{ lawyer.email }}</p>
+<p><strong>Phone:</strong> {{ lawyer.phone }}</p>
+
+
+<a href="#" class="btn btn-outline-primary mt-auto">View Profile</a>
+</div>
+</div>
+{% endfor %}
+</div>
+{% else %}
+<div class="alert alert-warning">No lawyers found matching your criteria.</div>
+{% endif %}
+
+
+<a href="{% url 'search_lawyer:search_form' %}" class="btn btn-secondary mt-3">Back to Search</a>
+{% endblock %}

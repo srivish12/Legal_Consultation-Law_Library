@@ -1,0 +1,32 @@
+/* General styling */
+body {
+background-color: #f7f7f7;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.navbar-brand {
+font-weight: 600;
+letter-spacing: 0.5px;
+}
+
+
+footer {
+font-size: 0.9rem;
+}
+
+
+.card {
+border-radius: 10px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.btn-primary {
+border-radius: 6px;
+}
+
+
+.container {
+padding-bottom: 40px;
+}
