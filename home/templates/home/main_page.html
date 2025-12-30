@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}LegalHub | Legal Consultation & Law Library{% endblock %}
+
+{% block meta %}
+<meta name="description"
+      content="Your one-stop platform for legal consultations, lawyer search, consultation packages, and a comprehensive law library.">
+<meta name="keywords"
+      content="Legal Consultation, Find Lawyer, Consultation Packages, Law Library, Legal Advice, Legal Services">
+{% endblock %}
+
+{% block corecss %}
+{{ block.super }}
+<style>
+    body {
+        background: url('/media/law_office_home1.jpg') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .hero-overlay {
+        background: rgba(0, 0, 0, 0.65);
+        border-radius: 1rem;
+    }
+
+    .feature-card {
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1rem 2rem rgba(0,0,0,.15);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+
+    <!-- Hero Section -->
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-7 mx-auto">
+            <div class="hero-overlay p-5 text-white text-center">
+                <h1 class="display-5 fw-bold mb-3">
+                    Legal Consultation Made Simple
+                </h1>
+                <p class="lead mb-4">
+                    Find trusted lawyers, book consultations, manage legal documents,
+                    and explore our comprehensive law library — all in one place.
+                </p>
+                <div>
+                    <a href="{% url 'search_lawyer' %}" class="btn btn-primary btn-lg me-2">
+                        Find a Lawyer
+                    </a>
+                    <a href="{% url 'package_list' %}" class="btn btn-outline-light btn-lg">
+                        View Packages
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row text-center mb-5 g-4">
+        <div class="col-md-4">
+            <div class="card feature-card h-100 p-4 shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">Search Lawyers</h4>
+                    <p class="card-text">
+                        Find solicitors and advocates by specialty and court level.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card feature-card h-100 p-4 shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">Consultation Packages</h4>
+                    <p class="card-text">
+                        Choose document handling, consultation-only, or court appearance packages.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card feature-card h-100 p-4 shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">Law Library</h4>
+                    <p class="card-text">
+                        Browse legal books by subject, author, title, or alphabet.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subscription Section -->
+    <div class="row mb-5">
+        <div class="col-lg-10 mx-auto">
+            <div class="card p-4 shadow-sm">
+                <h3 class="text-center mb-4">Subscription Benefits</h3>
+                <div class="row text-center">
+                    <div class="col-md-4 mb-3">
+                        <h5>No Subscription</h5>
+                        <p class="text-muted">Pay standard package prices</p>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <h5>Basic Subscription</h5>
+                        <p class="fw-semibold text-success">
+                            30% discount on consultation packages
+                        </p>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <h5>Full Subscription</h5>
+                        <p class="fw-semibold text-success">
+                            50% discount on consultation packages
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center py-4">
+        {% if user.is_authenticated %}
+            <h4 class="mb-3 text-white">
+                Welcome back, {{ user.username }}!
+            </h4>
+            <a href="/search/" class="btn btn-success btn-lg">
+                Start a Consultation
+            </a>
+        {% else %}
+            <h4 class="mb-3 text-white">
+                Get started with LegalHub today
+            </h4>
+            <a href="/accounts/register/" class="btn btn-success btn-lg me-2">
+                Register
+            </a>
+            <a href="/accounts/login/" class="btn btn-outline-light btn-lg">
+                Login
+            </a>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

@@ -21,4 +21,4 @@ def search_lawyer(request):
         court_level = request.GET.get('court_level')
         if court_level:
             queryset = queryset.filter(court_level=court_level)
-    return render(request, 'search_lawyer/search_form.html', {'lawyer': queryset})
+    return render(request, 'search_lawyer/search_results.html', {'lawyer': queryset})
