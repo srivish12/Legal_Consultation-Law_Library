@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ lawyer.name }} | Lawyer Profile{% endblock %}
+{% block corecss %}
+{{ block.super }}
+<style>
+    body {
+        background-color: rgb(201, 241, 101);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card p-4">
+            <!-- Header -->
+            <div class="d-flex align-items-center mb-4">
+                <div class="flex-grow-1">
+                    <h2 class="mb-0">{{ lawyer.name }}</h2>
+                    <span class="badge bg-primary mt-2">{{ lawyer.get_lawyer_type_display }}</span>
+                </div>
+            </div>
+
+            <!-- Lawyer Info -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <p><strong>Email:</strong> {{ lawyer.email|default:"N/A" }}</p>
+                    <p><strong>Phone:</strong> {{ lawyer.phone|default:"N/A" }}</p>
+                </div>
+                <div class="col-md-6">
+                    {% if lawyer.lawyer_type == 'solicitor' and lawyer.specialty %}
+                        <p><strong>Specialty:</strong> {{ lawyer.get_specialty_display }}</p>
+                    {% endif %}
+
+                    {% if lawyer.lawyer_type == 'advocate' and lawyer.court_level %}
+                        <p><strong>Court Level:</strong> {{ lawyer.get_court_level_display }}</p>
+                    {% endif %}
+
+                    {% if lawyer.hourly_rate %}
+                        <p><strong>Hourly Rate:</strong> ${{ lawyer.hourly_rate }}</p>
+                    {% endif %}
+                </div>
+            </div>
+           
+
+            <!-- Bio -->
+            {% if lawyer.bio %}
+                <div class="mb-4">
+                    <h5>About</h5>
+                    <p>{{ lawyer.bio }}</p>
+                </div>
+            {% endif %}
+
+            <!-- Consultation Packages -->
+            <div>
+                <h5>Consultation Packages</h5>
+                
+
+                {% for package in packages %}
+                    <div class="card p-3 mb-3">
+                        <h5>{{ package.title }}</h5>
+                        <p>{{ package.description }}</p>
+                        <p>
+                            <strong>Price:</strong>
+                            {% if package.min_price == package.max_price %}
+                                £{{ package.min_price }}
+                            {% else %}
+                                £{{ package.min_price }} – £{{ package.max_price }}
+                            {% endif %}                        
+
+                        </p>
+                            <a href="{% url 'payments:checkout' package.id %}" class="btn btn-success">
+                                     Book Consultation
+                             </a>
+                
+                    </div>
+                {% empty %}
+                    <p class="text-muted">No consultation packages available for this lawyer.</p>
+                {% endfor %}
+
+
+            <!-- Actions -->
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'search_lawyer' %}" class="btn btn-secondary">
+                    ← Back to Search
+                </a>
+
+               
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

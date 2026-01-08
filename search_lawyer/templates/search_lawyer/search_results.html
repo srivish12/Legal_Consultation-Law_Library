@@ -1,42 +1,85 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}Search Results{% endblock %}
+
+{% block corecss %}
+{{ block.super }}
+<style>
+    body {
+        background-color: rgb(241, 180, 101);
+    
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<h1 class="mb-4">Search Results</h1>
+<div class="container my-4">
 
+    <h1 class="mb-4 text-center">Search Results</h1>
 
-{% if lawyers %}
-<div class="row">
-{% for lawyer in lawyers %}
-<div class="col-md-4 mb-4">
-<div class="card p-3 h-100">
-<h4>{{ lawyer.name }}</h4>
-<p class="mb-1"><strong>Type:</strong> {{ lawyer.get_lawyer_type_display }}</p>
+    <!-- Centered Search Button Card -->
+    <div class="d-flex justify-content-center my-5">
+        <div class="card p-4 text-center shadow-sm">
+            <p class="fs-5 mb-3">Looking for a specific lawyer?</p>
+            <a href="{% url 'search_form' %}" class="btn btn-primary px-4">
+                Search choice
+            </a>
+        </div>
+    </div>
 
+    {% if lawyers %}
+    <div class="row">
+        {% for lawyer in lawyers %}
+        <div class="col-md-4 mb-4">
+            <div class="card p-3 h-100 shadow-sm d-flex flex-column">
 
-{% if lawyer.lawyer_type == 'solicitor' and lawyer.specialty %}
-<p class="mb-1"><strong>Specialty:</strong> {{ lawyer.get_specialty_display }}</p>
-{% endif %}
+                <h4>{{ lawyer.name }}</h4>
 
+                <p class="mb-1">
+                    <strong>Type:</strong> {{ lawyer.get_lawyer_type_display }}
+                </p>
 
-{% if lawyer.lawyer_type == 'advocate' and lawyer.court_level %}
-<p class="mb-1"><strong>Court Level:</strong> {{ lawyer.get_court_level_display }}</p>
-{% endif %}
+                {% if lawyer.lawyer_type == 'solicitor' and lawyer.specialty %}
+                <p class="mb-1">
+                    <strong>Specialty:</strong> {{ lawyer.get_specialty_display }}
+                </p>
+                {% endif %}
 
+                {% if lawyer.lawyer_type == 'advocate' and lawyer.court_level %}
+                <p class="mb-1">
+                    <strong>Court Level:</strong> {{ lawyer.get_court_level_display }}
+                </p>
+                {% endif %}
 
-<p><strong>Email:</strong> {{ lawyer.email }}</p>
-<p><strong>Phone:</strong> {{ lawyer.phone }}</p>
+                <p class="mb-1"><strong>Email:</strong> {{ lawyer.email }}</p>
+                <p class="mb-3"><strong>Phone:</strong> {{ lawyer.phone }}</p>
 
+                <!-- Button stays at bottom -->
+                <a href="{% url 'lawyer_details' lawyer.pk %}"
+                   class="btn btn-outline-primary mt-auto">
+                    View Profile
+                </a>
 
-<a href="#" class="btn btn-outline-primary mt-auto">View Profile</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <div class="alert alert-warning text-center">
+            No lawyers found matching your criteria.
+        </div>
+    {% endif %}
+
+    <!-- Bottom Search Button Card -->
+    <div class="d-flex justify-content-center my-5">
+        <div class="card p-4 text-center shadow-sm">
+            <p class="fs-5 mb-3">Looking for a specific lawyer?</p>
+            <a href="{% url 'search_form' %}" class="btn btn-primary px-4">
+                Search choice
+            </a>
+        </div>
+    </div>
+
 </div>
-</div>
-{% endfor %}
-</div>
-{% else %}
-<div class="alert alert-warning">No lawyers found matching your criteria.</div>
-{% endif %}
-
-
-<a href="{% url 'search_lawyer:search_form' %}" class="btn btn-secondary mt-3">Back to Search</a>
 {% endblock %}

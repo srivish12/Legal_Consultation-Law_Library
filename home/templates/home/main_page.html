@@ -128,14 +128,14 @@
             <h4 class="mb-3 text-white">
                 Welcome back, {{ user.username }}!
             </h4>
-            <a href="/search/" class="btn btn-success btn-lg">
+            <a href="{% url 'search_lawyer' %}" class="btn btn-success btn-lg">
                 Start a Consultation
             </a>
         {% else %}
             <h4 class="mb-3 text-white">
                 Get started with LegalHub today
             </h4>
-            <a href="/accounts/register/" class="btn btn-success btn-lg me-2">
+            <a href="/accounts/signup/" class="btn btn-success btn-lg me-2">
                 Register
             </a>
             <a href="/accounts/login/" class="btn btn-outline-light btn-lg">
