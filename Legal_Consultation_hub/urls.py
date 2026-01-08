@@ -21,12 +21,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
 path('admin/', admin.site.urls),
-#path('accounts/', include('accounts.urls', namespace='accounts')),
+path('accounts/', include('allauth.urls')),
 path('search/', include('search_lawyer.urls')),
 #path('packages/', include('consultation_packages.urls')),
 #path('subscriptions/', include('subscriptions.urls')),
 #path('payments/', include('payments.urls')),
 #path('library/', include('law_library.urls')),
-]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+path('', include('home.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
