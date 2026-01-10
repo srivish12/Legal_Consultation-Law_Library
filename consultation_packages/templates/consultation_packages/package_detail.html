@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ package.title }}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <h1 class="fw-bold mb-3">
+                {{ package.title }}
+            </h1>
+
+            {% if lawyer %}
+                <p><strong>Lawyer:</strong> {{ package.lawyer.name }}</p>
+            {% else %}
+                <p class="text-muted">This is the flat fee for any Lawyer.</p>
+            {% endif %} 
+
+
+
+            <p class="text-muted">
+                <strong>Type:</strong> {{ package.get_package_type_display }}
+            </p>
+
+            <p class="mb-4">
+                {{ package.description }}
+            </p>
+
+            <h4 class="text-primary">
+                {% if package.min_price == package.max_price %}
+                    £{{ package.min_price }}
+                {% else %}
+                    £{{ package.min_price }} – £{{ package.max_price }}
+                {% endif %}
+            </h4>
+            <a href="{% url 'payments:checkout' package.id %}" class="btn btn-success mt-4">
+                Proceed to Checkout
+            </a>
+
+            <a href="{% url 'package_list' %}" class="btn btn-secondary mt-4">
+                ← Back to packages
+            </a>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

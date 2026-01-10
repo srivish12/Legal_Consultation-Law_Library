@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Create Package{% endblock %}
+
+{% block content %}
+<h2>Create Consultation Package</h2>
+
+<form method="post" class="card p-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-success">Save Package</button>
+</form>
+{% endblock %}
