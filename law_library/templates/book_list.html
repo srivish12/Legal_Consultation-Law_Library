@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Law Library{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <h1 class="mb-4">Law Library</h1>
+
+    <!-- Filter Form -->
+    <form method="get" class="row g-3 mb-4">
+
+        <div class="col-md-4">
+            <input type="text" name="q" class="form-control"
+                placeholder="Search by title or author"
+                value="{{ query }}"
+            >
+        </div>
+
+        <div class="col-md-3">
+            <select name="subject" class="form-select">
+                <option value="">All Subjects</option>
+                {% for s in subjects %}
+                    <option value="{{ s }}" {% if subject == s %}selected{% endif %}>
+                        {{ s }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <select name="alphabet" class="form-select">
+                <option value="">All Alphabets</option>
+                {% for a in alphabets %}
+                    <option value="{{ a }}" {% if alphabet == a %}selected{% endif %}>
+                        {{ a }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">
+                Filter
+            </button>
+        </div>
+
+    </form>
+
+    <!-- Books Grid -->
+    <div class="row">
+        {% for book in books %}
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 h-100 d-flex flex-column">
+
+                    <h5 class="card-title">{{ book.title }}</h5>
+
+                    <p class="mb-1">
+                        <strong>Author:</strong> {{ book.author }}
+                    </p>
+
+                    <p class="mb-3">
+                        <strong>Subject:</strong> {{ book.subject }}
+                    </p>
+
+                    <a href="{% url 'book_detail' book.pk %}"
+                       class="btn btn-outline-primary mt-auto">
+                        View
+                    </a>
+
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <p class="text-muted">No books found.</p>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

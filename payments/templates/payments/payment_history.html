@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Payment History{% endblock %}
+
+
+{% block content %}
+<h1 class="mb-4">Payment History</h1>
+
+
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Package</th>
+<th>Original</th>
+<th>Discount</th>
+<th>Final</th>
+<th>Status</th>
+<th>Date</th>
+</tr>
+</thead>
+
+<tbody>
+{% for payment in payments %}
+<tr>
+    <td>{{ payment.package.title }}</td>
+    <td>${{ payment.original_amount }}</td>
+    <td>{{ payment.discount_percent }}%</td>
+    <td>${{ payment.final_amount }}</td>
+    <td>{{ payment.get_status_display }}</td>
+    <td>{{ payment.created_at|date:"Y-m-d" }}</td>
+
+    <td>
+        <form method="post" action="{% url 'payments:payment_delete' payment.id %}">
+            {% csrf_token %}
+            <button type="submit"
+                    class="btn btn-danger btn-sm"
+                    onclick="return confirm('Are you sure you want to delete this payment?');">
+                Delete
+            </button>
+        </form>
+    </td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="7" class="text-center">No payments yet.</td>
+</tr>
+{% endfor %}
+</tbody>
+
+</table>
+
+<div class="text-center">
+<a href="{% url 'home_page' %}" class="btn btn-primary mt-3">Back to main page</a>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block corecss %}
+{{ block.super }}
+<style>
+    body {
+        background-color: rgb(84, 204, 110);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Checkout</h1>
+
+
+<div class="card p-4">
+<h4>{{ package.title }}</h4>
+<p>{{ package.description }}</p>
+
+
+<hr>
+<p>Original Price: <strong>£{{ original_amount }}</strong></p>
+<p>Subscription Discount: <strong>{{ discount }}%</strong></p>
+<h4>Final Price: £{{ final_amount }}</h4>
+
+
+<form method="post">
+{% csrf_token %}
+<button class="btn btn-success btn-lg">Pay Now</button>
+</form>
+</div>
+{% endblock %}

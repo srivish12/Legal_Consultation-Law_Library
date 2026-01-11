@@ -21,6 +21,12 @@
                     <h2 class="mb-0">{{ lawyer.name }}</h2>
                     <span class="badge bg-primary mt-2">{{ lawyer.get_lawyer_type_display }}</span>
                 </div>
+                <div>
+                    {% if lawyer.profile_picture %}
+                        <img src="{{ lawyer.profile_picture.url }}" alt="{{ lawyer.name }}" class="img-thumbnail" style="width: 120px; height: 120px; border-radius: 25%; object-fit: cover;">
+                    {% endif %}
+
+                </div>
             </div>
 
             <!-- Lawyer Info -->

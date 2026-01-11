@@ -21,7 +21,7 @@ class ConsultationPackage(models.Model):
     description = models.TextField(blank=True)
     min_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     max_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-
+    
     lawyer = models.ForeignKey(Lawyer, on_delete=models.CASCADE, null=True, blank=True, related_name='packages')
 
 

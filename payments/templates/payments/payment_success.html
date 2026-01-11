@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Payment Successful{% endblock %}
+
+{% block corecss %}
+{{ block.super }}
+<style>
+    body {
+        background-color: rgba(146, 203, 86, 0.84);
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="alert alert-success">
+<h3>Payment Successful</h3>
+<p>Thank you for your payment.</p>
+</div>
+
+
+<div class="card p-4">
+<p><strong>Package:</strong> {{ payment.package.title }}</p>
+<p><strong>Amount Paid:</strong> ${{ payment.final_amount }}</p>
+<p><strong>Status:</strong> {{ payment.get_status_display }}</p>
+</div>
+
+
+<a href="{% url 'package_list' %}" class="btn btn-primary mt-3">Back to Packages</a>
+<a href="{% url 'payments:history' %}" class="btn btn-outline-dark mt-3">Payment History</a>
+{% endblock %}

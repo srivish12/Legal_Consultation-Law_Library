@@ -56,7 +56,8 @@ class Lawyer(models.Model):
     email = models.EmailField(blank=True)
     bio = models.TextField(blank=True)
     hourly_rate = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-
+    profile_picture = models.ImageField(upload_to='lawyers/', blank=True, null=True)
+    
 
     is_available = models.BooleanField(default=True)
 

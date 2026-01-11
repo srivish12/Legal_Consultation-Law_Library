@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Subscriptions{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Choose Your Subscription</h1>
+
+<div class="row">
+
+    <!-- No Subscription -->
+    <div class="col-md-4">
+        <div class="card p-4 h-100 {% if current_plan == 'none' %}border-success{% endif %}">
+            <h3>No Subscription</h3>
+            <p>No discount on consultation packages.</p>
+            <h4 class="my-3">$0</h4>
+
+            {% if current_plan == 'none' %}
+                <button class="btn btn-success" disabled>Active</button>
+            {% else %}
+                <a href="{% url 'subscriptions:checkout' 'none' %}" class="btn btn-outline-primary">Select</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Basic Subscription -->
+    <div class="col-md-4">
+        <div class="card p-4 h-100 {% if current_plan == 'basic' %}border-success{% endif %}">
+            <h3>Basic Subscription</h3>
+            <p><strong>30% discount</strong> on consultation packages.</p>
+            <h4 class="my-3">$29 / month</h4>
+
+            {% if current_plan == 'basic' %}
+                <a href="{% url 'subscriptions:renew' 'basic' %}" class="btn btn-warning">Renew</a>
+            {% else %}
+                <a href="{% url 'subscriptions:checkout' 'basic' %}" class="btn btn-primary">Buy</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Full Subscription -->
+    <div class="col-md-4">
+        <div class="card p-4 h-100 {% if current_plan == 'full' %}border-success{% endif %}">
+            <h3>Full Subscription</h3>
+            <p><strong>50% discount</strong> on consultation packages.</p>
+            <h4 class="my-3">$59 / month</h4>
+
+            {% if current_plan == 'full' %}
+                <a href="{% url 'subscriptions:renew' 'full' %}" class="btn btn-warning">Renew</a>
+            {% else %}
+                <a href="{% url 'subscriptions:checkout' 'full' %}" class="btn btn-primary">Buy</a>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
