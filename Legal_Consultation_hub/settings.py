@@ -38,18 +38,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
 
+    'allauth.socialaccount.providers.google',
+    
     'search_lawyer',
     'consultation_packages',
     'subscriptions',
     'payments',
     'law_library',
     'home',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -114,15 +118,27 @@ ACCOUNT_SIGNUP_FIELDS = [
 ]
 
 ACCOUNT_ATHENTICATION_METHOD = 'username_email'
-#ACCOUNT_EMAIL_REQUIRED = True
+
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
 ACCOUNT_SIGNUP_URL = '/accounts/signup/'
+
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 # Authentication Redirects
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+#Socialaccount settings
+SOCIALACCOUNT_LOGIN_ON_GET = False
+
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
+SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
+
+
+# WSGI application
 WSGI_APPLICATION = 'Legal_Consultation_hub.wsgi.application'
 
 

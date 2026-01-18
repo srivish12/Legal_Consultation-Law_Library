@@ -1,4 +1,8 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
+
+{% load static %}
+{% load socialaccount %}
+
 {% load i18n %}
 {% load allauth account %}
 {% block head_title %}
@@ -49,9 +53,26 @@
             {% endif %}
         {% endelement %}
     {% endif %}
-    {% if SOCIALACCOUNT_ENABLED %}
+
+    {% if socialaccount_providers %}
+    <div class="text-center my-4">
+        <hr>
+        <span class="text-muted">OR</span>
+    </div>
+
+    <div class="d-grid gap-2">
+        {% for provider in socialaccount_providers %}
+            <a href="{% provider_login_url provider.id %}"
+               class="btn btn-outline-dark">
+                Continue with {{ provider.name }}
+            </a>
+        {% endfor %}
+    </div>
+{% endif %}
+
+    <!--{% if SOCIALACCOUNT_ENABLED %}
         {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-    {% endif %}
+    {% endif %}-->
 {% endblock content %}
 {% block extra_body %}
     {{ block.super }}

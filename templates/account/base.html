@@ -1,15 +1,99 @@
-{% extends "base.html" %}
+{% load i18n %}
+{% load allauth account %}
+{% load static %}
+
+{% block head_title %}
+    {% trans "Sign In" %}
+{% endblock %}
 
 {% block content %}
-    <div class="container header-container">
-        <div class="overlay"></div>
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <div class="allauth-form-inner-content">
-                    {% block inner_content %}
-                    {% endblock %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+
+                    <h1 class="h3 mb-3 text-center">
+                        {% trans "Sign In" %}
+                    </h1>
+
+                    {% if not SOCIALACCOUNT_ONLY %}
+                        <p class="text-center text-muted">
+                            {% blocktranslate %}
+                            If you have not created an account yet, please
+                            <a href="{{ signup_url }}">sign up</a> first.
+                            {% endblocktranslate %}
+                        </p>
+
+                        {% url 'account_login' as login_url %}
+                        <form method="post" action="{{ login_url }}">
+                            {% csrf_token %}
+
+                            {% for field in form %}
+                                <div class="mb-3">
+                                    <label class="form-label">
+                                        {{ field.label }}
+                                    </label>
+                                    {{ field }}
+                                    {% if field.errors %}
+                                        <div class="text-danger small">
+                                            {{ field.errors }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+
+                            {{ redirect_field }}
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">
+                                    {% trans "Sign In" %}
+                                </button>
+                            </div>
+                        </form>
+                    {% endif %}
+
+                    {% if LOGIN_BY_CODE_ENABLED or PASSKEY_LOGIN_ENABLED %}
+                        <hr class="my-4">
+
+                        <div class="d-grid gap-2">
+                            {% if PASSKEY_LOGIN_ENABLED %}
+                                <button
+                                    type="submit"
+                                    form="mfa_login"
+                                    id="passkey_login"
+                                    class="btn btn-outline-primary">
+                                    {% trans "Sign in with a passkey" %}
+                                </button>
+                            {% endif %}
+
+                            {% if LOGIN_BY_CODE_ENABLED %}
+                                <a href="{{ request_login_code_url }}"
+                                   class="btn btn-outline-primary">
+                                    {% trans "Send me a sign-in code" %}
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+                    {% if SOCIALACCOUNT_ENABLED %}
+                        <hr class="my-4">
+                        {% include "socialaccount/snippets/login.html" %}
+                    {% endif %}
+
                 </div>
             </div>
+
         </div>
     </div>
+</div>
 {% endblock %}
+
+{% block extra_body %}
+    {{ block.super }}
+    {% if PASSKEY_LOGIN_ENABLED %}
+        {% include "mfa/webauthn/snippets/login_script.html" with button_id="passkey_login" %}
+    {% endif %}
+{% endblock %}
+
