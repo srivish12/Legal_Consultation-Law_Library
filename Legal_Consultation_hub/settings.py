@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'law_library',
     'home',
     'core',
+    'review',
+
 ]
 
 MIDDLEWARE = [

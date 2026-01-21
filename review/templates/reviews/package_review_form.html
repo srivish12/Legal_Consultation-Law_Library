@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Review Package{% endblock %}
+
+
+{% block content %}
+<h2>Review {{ package.title }}</h2>
+<form method="post" class="card p-4">
+{% csrf_token %}
+{{ form.as_p }}
+<button class="btn btn-success">Submit Review</button>
+</form>
+{% endblock %}

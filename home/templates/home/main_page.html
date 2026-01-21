@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load review_extras %}
 
 {% block title %}LegalHub | Legal Consultation & Law Library{% endblock %}
 
 {% block meta %}
 <meta name="description"
-      content="Your one-stop platform for legal consultations, lawyer search, consultation packages, and a comprehensive law library.">
+    content="Your one-stop platform for legal consultations, lawyer search, consultation packages, and a comprehensive law library.">
 <meta name="keywords"
-      content="Legal Consultation, Find Lawyer, Consultation Packages, Law Library, Legal Advice, Legal Services">
+    content="Legal Consultation, Find Lawyer, Consultation Packages, Law Library, Legal Advice, Legal Services">
 {% endblock %}
 
 {% block corecss %}
@@ -30,9 +31,33 @@
 
     .feature-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 1rem 2rem rgba(0,0,0,.15);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, .15);
+    }
+
+
+    #package-carousel::-webkit-scrollbar {
+        display: none;
+        /* Hide scrollbar */
+
+    }
+
+    .package-review-card {
+        transition: transform .2s ease, box-shadow .2s ease;
+        background: rgba(194, 241, 133, 0.896);
+    }
+
+    .package-review-card .card {
+        max-height: none;
+        overflow: visible;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, .15);
+    }
+
+    .package-review-card:hover {
+        transform: scale(1.05);
+
     }
 </style>
+
 {% endblock %}
 
 {% block content %}
@@ -61,39 +86,6 @@
         </div>
     </div>
 
-    <!-- Features Section -->
-    <div class="row text-center mb-5 g-4">
-        <div class="col-md-4">
-            <div class="card feature-card h-100 p-4 shadow-sm">
-                <div class="card-body">
-                    <h4 class="card-title mb-3">Search Lawyers</h4>
-                    <p class="card-text">
-                        Find solicitors and advocates by specialty and court level.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card feature-card h-100 p-4 shadow-sm">
-                <div class="card-body">
-                    <h4 class="card-title mb-3">Consultation Packages</h4>
-                    <p class="card-text">
-                        Choose document handling, consultation-only, or court appearance packages.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card feature-card h-100 p-4 shadow-sm">
-                <div class="card-body">
-                    <h4 class="card-title mb-3">Law Library</h4>
-                    <p class="card-text">
-                        Browse legal books by subject, author, title, or alphabet.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Subscription Section -->
     <div class="row mb-5">
@@ -118,6 +110,11 @@
                         </p>
                     </div>
                 </div>
+                <a href="{% url 'subscriptions:list' %}"
+                    class=" btn btn-success w-50 text-center text-decoration-none d-block mx-auto mt-3">
+                    Check Prices
+                </a>
+
             </div>
         </div>
     </div>
@@ -125,24 +122,149 @@
     <!-- Call to Action -->
     <div class="text-center py-4">
         {% if user.is_authenticated %}
-            <h4 class="mb-3 text-white">
-                Welcome back, {{ user.username }}!
-            </h4>
-            <a href="{% url 'search_lawyer' %}" class="btn btn-success btn-lg">
-                Start a Consultation
-            </a>
+        <h4 class="mb-3 text-white">
+            Welcome back, {{ user.username }}!
+        </h4>
+        <a href="{% url 'search_lawyer' %}" class="btn btn-success btn-lg">
+            Start a Consultation
+        </a>
         {% else %}
-            <h4 class="mb-3 text-white">
-                Get started with LegalHub today
-            </h4>
-            <a href="/accounts/signup/" class="btn btn-success btn-lg me-2">
-                Register
-            </a>
-            <a href="/accounts/login/" class="btn btn-outline-light btn-lg">
-                Login
-            </a>
+        <h4 class="mb-3 text-white">
+            Get started with LegalHub today
+        </h4>
+        <a href="/accounts/signup/" class="btn btn-success btn-lg me-2">
+            Register
+        </a>
+        <a href="/accounts/login/" class="btn btn-outline-light btn-lg">
+            Login
+        </a>
         {% endif %}
     </div>
 
-</div>
-{% endblock %}
+
+    <!-- Latest Package Reviews -->
+    <div class="container-lg my-5 row bg-secondary bg-opacity-60 p-3 rounded">
+        <h2 class="text-white mb-3">What Clients Say About Our Packages</h2>
+
+        <div class="position-relative">
+            <!-- Left Arrow -->
+            <button id="scroll-left" class="btn btn-light position-absolute top-50 start-0 translate-middle-y"
+                style="z-index: 10;">
+                &#8249;
+            </button>
+
+            <!-- Scrollable Container -->
+            <div id="package-carousel" class="d-flex overflow-auto py-6" style="scroll-behavior: smooth; gap: 1rem;">
+                {% for review in latest_package_reviews %}
+                <div class="card package-review-card p-3" style="min-width: 300px; flex: 0 0 auto;">
+                    <h5>{{ review.package.title }}</h5>
+                    <p class="text-muted">Lawyer: {{ review.package.lawyer.name }}</p>
+                    <p>{% for i in review.rating|star_range %}⭐{% endfor %}</p>
+                    <p>{{ review.comment }}</p>
+                    <small class="text-muted">— {{ review.user.username }}</small>
+                </div>
+                {% empty %}
+                <p>No package reviews yet.</p>
+
+
+                {% endfor %}
+            </div>
+
+            <!-- Right Arrow -->
+            <button id="scroll-right" class="btn btn-light position-absolute top-50 end-0 translate-middle-y"
+                style="z-index: 10;">
+                &#8250;
+            </button>
+        </div>
+
+
+    </div>
+
+
+    {% endblock %}
+
+    {% block extra_js %}
+
+    {{ block.super }}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const carousel = document.getElementById('package-carousel');
+            const leftBtn = document.getElementById('scroll-left');
+            const rightBtn = document.getElementById('scroll-right');
+
+            const scrollAmount = 320; // card width + gap
+            let page = 2; // initial page already rendered is page 1
+            let loading = false;
+            let hasNext = true;
+
+            // Scroll buttons
+            leftBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+
+            rightBtn.addEventListener('click', async () => {
+                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+
+                // If scrolled near end and more pages exist, load next
+                if (!loading && hasNext) {
+                    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+                    if (carousel.scrollLeft + scrollAmount >= maxScroll - 50) {
+                        await loadMoreReviews();
+                    }
+                }
+            });
+
+            async function loadMoreReviews() {
+                loading = true;
+
+                try {
+                    const res = await fetch(`/reviews/load-more-package-reviews/?page=${page}`);
+                    if (!res.ok) throw new Error('Network error');
+
+                    const data = await res.json();
+
+                    data.reviews.forEach(review => {
+                        const stars = '⭐'.repeat(review.rating);
+
+                        const html = `
+                <div class="card package-review-card p-3" style="min-width: 300px; flex: 0 0 auto;">
+                    <h5>${review.package}</h5>
+                    <p class="text-muted">Lawyer: ${review.lawyer}</p>
+                    <p>${stars}</p>
+                    <p>${review.comment}</p>
+                    <small class="text-muted">— ${review.user}</small>
+                </div>
+                `;
+                        carousel.insertAdjacentHTML('beforeend', html);
+                    });
+
+                    hasNext = data.has_next;
+                    page++;
+
+                    // Hide right arrow if no more pages
+                    if (!hasNext) rightBtn.style.display = 'none';
+
+                } catch (error) {
+                    console.error('Error loading more reviews:', error);
+                } finally {
+                    loading = false;
+                }
+            }
+
+            // Optional: auto load more as user scrolls manually
+            carousel.addEventListener('scroll', () => {
+                if (!loading && hasNext) {
+                    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+                    if (carousel.scrollLeft >= maxScroll - 50) {
+                        loadMoreReviews();
+                    }
+                }
+            });
+
+        });
+    </script>
+
+
+    {% endblock %}

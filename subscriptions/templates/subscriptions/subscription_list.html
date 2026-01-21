@@ -12,7 +12,7 @@
         <div class="card p-4 h-100 {% if current_plan == 'none' %}border-success{% endif %}">
             <h3>No Subscription</h3>
             <p>No discount on consultation packages.</p>
-            <h4 class="my-3">$0</h4>
+            <h4 class="my-3">£0</h4>
 
             {% if current_plan == 'none' %}
                 <button class="btn btn-success" disabled>Active</button>
@@ -27,7 +27,7 @@
         <div class="card p-4 h-100 {% if current_plan == 'basic' %}border-success{% endif %}">
             <h3>Basic Subscription</h3>
             <p><strong>30% discount</strong> on consultation packages.</p>
-            <h4 class="my-3">$29 / month</h4>
+            <h4 class="my-3">£29 / month</h4>
 
             {% if current_plan == 'basic' %}
                 <a href="{% url 'subscriptions:renew' 'basic' %}" class="btn btn-warning">Renew</a>
@@ -42,7 +42,7 @@
         <div class="card p-4 h-100 {% if current_plan == 'full' %}border-success{% endif %}">
             <h3>Full Subscription</h3>
             <p><strong>50% discount</strong> on consultation packages.</p>
-            <h4 class="my-3">$59 / month</h4>
+            <h4 class="my-3">£59 / month</h4>
 
             {% if current_plan == 'full' %}
                 <a href="{% url 'subscriptions:renew' 'full' %}" class="btn btn-warning">Renew</a>
