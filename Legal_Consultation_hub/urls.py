@@ -30,4 +30,5 @@ urlpatterns = [
     path('law_library/', include('law_library.urls')),
     path('subscriptions/', include('subscriptions.urls')),
     path('payments/', include('payments.urls')),
+    path('reviews/', include('review.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
