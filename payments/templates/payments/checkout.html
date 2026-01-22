@@ -9,27 +9,133 @@
     body {
         background-color: rgb(84, 204, 110);
     }
+
+    .checkout-title {
+        font-weight: 600;
+    }
+
+    .card {
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        border: none;
+    }
+
+    .form-label {
+        font-weight: 500;
+    }
+
+    .summary-price {
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
 </style>
 {% endblock %}
 
 {% block content %}
-<h1 class="mb-4">Checkout</h1>
+<div class="container my-5">
+    <h2 class="mb-4 checkout-title">Checkout</h2>
 
+    <form method="post">
+        {% csrf_token %}
 
-<div class="card p-4">
-<h4>{{ package.title }}</h4>
-<p>{{ package.description }}</p>
+        <div class="row g-4">
 
+            <!-- LEFT: CUSTOMER & CARD DETAILS -->
+            <div class="col-lg-7">
+                <div class="card p-4">
 
-<hr>
-<p>Original Price: <strong>£{{ original_amount }}</strong></p>
-<p>Subscription Discount: <strong>{{ discount }}%</strong></p>
-<h4>Final Price: £{{ final_amount }}</h4>
+                    <h5 class="mb-4">Customer Details</h5>
 
+                    <div class="mb-3">
+                        <label class="col-sm-2 form-label">{{ form.full_name.label_tag }}</label>
+                        {{ form.full_name }}
+                    </div>
 
-<form method="post">
-{% csrf_token %}
-<button class="btn btn-success btn-lg">Pay Now</button>
-</form>
+                    <div class="mb-3">
+                        <label class="col-sm-2 form-label">{{ form.email.label_tag }}</label>
+                        {{ form.email }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="col-sm-2 form-label">{{ form.phone.label_tag }}</label>
+                        {{ form.phone }}
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">{{ form.address.label_tag }}</label>
+                        {{ form.address }}
+                    </div>
+
+                    <hr class="my-4 border-2">
+
+                    <h5 class="mb-4">Card Details</h5>
+
+                    <div class="mb-3">
+                        <label class="col-sm-2 col-md-4 form-label">{{ form.cardholder_name.label_tag }}</label>
+                        {{ form.cardholder_name }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="col-sm-2 col-md-4 form-label">{{ form.card_number.label_tag }}</label>
+                        {{ form.card_number }}
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">{{ form.expiry_month.label_tag }}</label>
+                            {{ form.expiry_month }}
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">{{ form.expiry_year.label_tag }}</label>
+                            {{ form.expiry_year }}
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">{{ form.cvv.label_tag }}</label>
+                            {{ form.cvv }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: ORDER SUMMARY -->
+            <div class="col-lg-5">
+                <div class="card p-4">
+
+                    <h5 class="mb-2">{{ package.title }}</h5>
+                    <p class="text-muted">{{ package.description }}</p>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Original Price</span>
+                        <strong>£{{ original_amount }}</strong>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Subscription Discount</span>
+                        <strong>{{ discount }}%</strong>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-4">
+                        <span class="summary-price">Final Price</span>
+                        <span class="summary-price">£{{ final_amount }}</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-lg w-100">
+                        Pay Now
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    {% if form.errors %}
+    <div class="alert alert-danger mt-4">
+        {{ form.errors }}
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

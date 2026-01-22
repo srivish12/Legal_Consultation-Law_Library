@@ -24,9 +24,9 @@
 {% for payment in payments %}
 <tr>
     <td>{{ payment.package.title }}</td>
-    <td>${{ payment.original_amount }}</td>
+    <td>£{{ payment.original_amount }}</td>
     <td>{{ payment.discount_percent }}%</td>
-    <td>${{ payment.final_amount }}</td>
+    <td>£{{ payment.final_amount }}</td>
     <td>{{ payment.get_status_display }}</td>
     <td>{{ payment.created_at|date:"Y-m-d" }}</td>
 

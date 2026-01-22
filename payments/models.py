@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from decimal import Decimal
+from subscriptions.models import Subscription
 from consultation_packages.models import ConsultationPackage
 
 class Payment(models.Model):
@@ -33,6 +34,11 @@ class Payment(models.Model):
 
     method = models.CharField(max_length=20, choices=PAYMENT_METHODS)
 
+    full_name = models.CharField(max_length=200, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    phone = models.CharField(max_length=20, null=True, blank=True)
+    address = models.TextField(null=True, blank=True)
+
     original_amount = models.DecimalField(
         max_digits=10,
         decimal_places=2
@@ -62,8 +68,12 @@ class Payment(models.Model):
         """
         percent = 0
 
-        subscription = getattr(self.user, 'subscription', None)
-        if subscription and subscription.is_active():
+        subscription = Subscription.objects.filter(
+            user=self.user,
+            expires_at__gt=timezone.now()
+        ).first()
+        
+        if subscription:
             percent = subscription.discount_percent()
 
         discount = (self.original_amount * Decimal(percent)) / Decimal(100)
@@ -81,4 +91,3 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"Payment #{self.id} - {self.user} - {self.status}"
-

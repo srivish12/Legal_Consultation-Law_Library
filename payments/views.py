@@ -1,52 +1,69 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from urllib3 import request
 from consultation_packages.models import ConsultationPackage
 from subscriptions.models import Subscription
 from .models import Payment
 from django.contrib import messages
 from datetime import timedelta
 from django.utils import timezone
+from .forms import CheckoutForm
 
+#import stripe
 
 @login_required
 def checkout(request, package_id):
-	package = get_object_or_404(ConsultationPackage, id=package_id)
+    package = get_object_or_404(ConsultationPackage, id=package_id)
 
-	subscription, _ = Subscription.objects.get_or_create(user=request.user)
-	discount = subscription.discount_percentage()
+    subscription = Subscription.objects.filter(user=request.user).first()
+    discount = subscription.discount_percentage() if subscription else 0
 
-	# Decide original amount
-	if package.min_price:
-		original_amount = package.min_price
-	else:
-		original_amount = package.max_price
+    # Decide original amount
+    original_amount = (
+        package.min_price if package.min_price else package.max_price
+    )
 
-	# Apply discount
-	final_amount = original_amount - (original_amount * discount / 100)
+    # Apply discount
+    final_amount = original_amount - (original_amount * discount / 100)
 
-	if request.method == 'POST':
-		payment = Payment.objects.create(
-			user=request.user,
-			package=package,
-			original_amount=original_amount,
-			discount_percent=discount,
-			final_amount=final_amount,
-			status=Payment.COMPLETED # simulated payment
-		)
-		#payment.mark_completed()
-		#return redirect('payments:success', payment.id)
-		return redirect('subscriptions:my_subscription') #, payment_id=payment.id)
-	context = {
-		'package': package,
-		'original_amount': original_amount,
-		'discount': discount,
-		'final_amount': final_amount,
-		'subscription': subscription,
-	}
+    if request.method == 'POST':
+        form = CheckoutForm(request.POST)
 
-	return render(request, 'payments/checkout.html', context)
+        if form.is_valid():
+            payment = Payment.objects.create(
+                user=request.user,
+                package=package,
+                full_name=form.cleaned_data['full_name'],
+                email=form.cleaned_data['email'],
+                phone=form.cleaned_data['phone'],
+                address=form.cleaned_data['address'],
+                original_amount=original_amount,
+                discount_percent=discount,
+                final_amount=final_amount,
+            )
 
+            payment.mark_completed()
 
+            return redirect('payments:success', payment.id)
+
+    else:
+        form = CheckoutForm(
+            initial={
+                'email': request.user.email
+            }
+        )
+
+    # ✅ THIS MUST ALWAYS RUN
+    context = {
+        'package': package,
+        'original_amount': original_amount,
+        'discount': discount,
+        'final_amount': final_amount,
+        'subscription': subscription,
+        'form': form,
+    }
+
+    return render(request, 'payments/checkout.html', context)
 
 
 @login_required
