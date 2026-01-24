@@ -21,6 +21,25 @@ class Payment(models.Model):
         (COMPLETED, 'Completed'),
         (FAILED, 'Failed'),
     ]
+    CONSULTATION_PACKAGE = 'consultation_package'
+    SUBSCRIPTION = 'subscription'
+
+    PAYMENT_TYPE_CHOICES = [
+        (CONSULTATION_PACKAGE, 'Consultation Package'),
+        (SUBSCRIPTION, 'Subscription'),
+    ]
+
+    payment_type = models.CharField(
+        max_length=20,
+        choices=PAYMENT_TYPE_CHOICES,
+        null=True, blank=True
+
+    )
+
+    subscription_plan = models.CharField(
+        max_length=10,
+        null=True, blank=True
+    )
 
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -31,6 +50,10 @@ class Payment(models.Model):
         'consultation_packages.ConsultationPackage',
         on_delete=models.CASCADE, null=True, blank=True
     )
+
+
+
+    stripe_session_id = models.CharField(max_length=255, blank=True, null=True)
 
     method = models.CharField(max_length=20, choices=PAYMENT_METHODS)
 

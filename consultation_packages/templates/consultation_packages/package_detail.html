@@ -5,6 +5,20 @@
 {{ package.title }}
 {% endblock %}
 
+{% block corecss %}
+{{ block.super }}
+<style>
+    body {
+        background-color:rgb(183, 98, 52);
+    }
+     .card {
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        border: 1px solid #0c0c0c;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="container mt-5">
     <div class="card shadow-sm">
@@ -15,10 +29,10 @@
             </h1>
 
             {% if lawyer %}
-                <p><strong>Lawyer:</strong> {{ package.lawyer.name }}</p>
+            <p><strong>Lawyer:</strong> {{ package.lawyer.name }}</p>
             {% else %}
-                <p class="text-muted">This is the flat fee for any Lawyer.</p>
-            {% endif %} 
+            <p class="text-muted">This is the flat fee for any Lawyer.</p>
+            {% endif %}
 
 
 
@@ -32,19 +46,62 @@
 
             <h4 class="text-primary">
                 {% if package.min_price == package.max_price %}
-                    £{{ package.min_price }}
+                £{{ package.min_price }}
                 {% else %}
-                    £{{ package.min_price }} – £{{ package.max_price }}
+                £{{ package.min_price }} – £{{ package.max_price }}
                 {% endif %}
-            </h4>
-            <a href="{% url 'payments:checkout' package.id %}" class="btn btn-success mt-4">
-                Proceed to Checkout
-            </a>
 
-            <a href="{% url 'package_list' %}" class="btn btn-secondary mt-4">
-                ← Back to packages
-            </a>
+                > </h4>
 
+
+            <h4>Reviews</h4>
+
+            {% for review in package.reviews.all %}
+            <div class="border p-2 mb-2">
+                ⭐ {{ review.rating }} / 5<br>
+                {{ review.comment }}<br>
+                <small>{{ review.user.username }}</small>
+            </div>
+            {% empty %}
+            <p>No reviews yet.</p>
+            {% endfor %}
+
+
+            <div class="d-flex gap-3">
+
+                <a href="{% url 'payments:checkout' package.id %}" class="btn btn-success mt-4">
+                    Proceed to Checkout
+                </a>
+
+                <a href="{% url 'package_list' %}" class="btn btn-secondary mt-4">
+                    ← Back to packages
+                </a>
+
+
+                <div class="mt-4">
+                    <h6>Share this package:</h6>
+
+                    <a class="btn btn-outline-primary btn-sm me-2"
+                        href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
+                        target="_blank">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+
+                    <a class="btn btn-outline-info btn-sm me-2"
+                        href="https://twitter.com/intent/tweet?text={{ package.title }}&url={{ request.build_absolute_uri }}"
+                        target="_blank">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+
+                    <a class="btn btn-outline-secondary btn-sm"
+                        href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ package.title }}"
+                        target="_blank">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+
+
+            </div>
         </div>
     </div>
 </div>

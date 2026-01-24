@@ -7,17 +7,46 @@
 {{ block.super }}
 <style>
     body {
-        background-color: rgb(241, 180, 101);
-    
+        background: url('/media/find-lawyer2.jpeg') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        
+    }
+
+    .hero-overlay {
+        background: rgba(0, 0, 0, 0.65);
+        border-radius: 1rem;
+    }
+
+    .feature-card {
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1rem 2rem rgba(0,0,0,.15);
     }
 </style>
+{% endblock %}
+
+
+{% block page_header %}
+<div class="container my-4 col-md-8 col-lg-6 hero-overlay p-4 text-center text-white">
+    <div class="row">
+        <div class=" col text-center ">
+            <h1 class="fw-bold">Search Results</h1>
+            <p class="text-white">
+                Below are the legal professionals that best match your search criteria
+            </p>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block content %}
 <div class="container my-4">
 
-    <h1 class="mb-4 text-center">Search Results</h1>
-
+    
     <!-- Centered Search Button Card -->
     <div class="d-flex justify-content-center my-5">
         <div class="card p-4 text-center shadow-sm">

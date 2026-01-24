@@ -6,15 +6,6 @@ class CheckoutForm(forms.Form):
     phone = forms.CharField(max_length=20)
     address = forms.CharField(widget=forms.Textarea)
 
-    card_number = forms.CharField(
-        max_length=16,
-        min_length=16,
-        widget=forms.TextInput(attrs={'placeholder': '1234 5678 9012 3456'})
-    )
-    expiry_month = forms.IntegerField(min_value=1, max_value=12)
-    expiry_year = forms.IntegerField(min_value=2024, max_value=2035)
-    cvv = forms.CharField(max_length=4, min_length=3)
-    cardholder_name = forms.CharField(max_length=100)
 
     widgets = {
     'full_name': forms.TextInput(attrs={'class': 'form-control'}),

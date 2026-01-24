@@ -3,6 +3,17 @@
 {% block title %}Review Package{% endblock %}
 
 
+{% block corecss %}
+{{ block.super }}
+<style>
+    body {
+        background-color: rgba(146, 203, 86, 0.84);
+    }
+</style>
+{% endblock %}
+
+
+
 {% block content %}
 <h2>Review {{ package.title }}</h2>
 <form method="post" class="card p-4">

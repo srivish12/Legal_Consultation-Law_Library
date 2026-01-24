@@ -4,6 +4,23 @@
 {% block title %}Payment History{% endblock %}
 
 
+{% block corecss %}
+{{ block.super }}
+
+<style>
+    body {
+        background-color: rgba(146, 203, 86, 0.84);
+    }
+
+    .card {
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        border: 1px solid #0c0c0c;
+    }
+</style>
+
+{% endblock %}
+
 {% block content %}
 <h1 class="mb-4">Payment History</h1>
 
@@ -17,6 +34,7 @@
 <th>Final</th>
 <th>Status</th>
 <th>Date</th>
+<th>Actions</th>
 </tr>
 </thead>
 

@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Search Lawyer{% endblock %}
+
+{% block corecss %}
+{{ block.super }}
+<style>
+    body {
+       background-color: rgb(189, 100, 52);
+    
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 
 <h1 class="mb-4">Find a Lawyer</h1>

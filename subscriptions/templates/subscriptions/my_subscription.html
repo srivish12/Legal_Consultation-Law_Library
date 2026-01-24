@@ -2,8 +2,52 @@
 {% load static %}
 {% block title %}My Subscription{% endblock %}
 
+
+{% block corecss %}
+{{ block.super }}
+<style>
+    body {
+        background: url('/media/my-page.jpeg') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        
+    }
+
+    .hero-overlay {
+        background: rgba(0, 0, 0, 0.65);
+        border-radius: 1rem;
+    }
+
+    .card {
+        transition: transform .2s ease, box-shadow .2s ease;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    
+</style>
+{% endblock %}
+
+
+
+{% block page_header %}
+<div class="container my-4 col-md-8 col-lg-6 hero-overlay p-4 text-center text-white">
+    <div class="row">
+        <div class=" col text-center ">
+            <h1 class="fw-bold">My Subscription</h1>
+            <p class="text-white">
+                View and manage your subscription details and purchased consultation packages
+            </p>
+        </div>
+    </div>
+</div>
+<hr>
+<hr>
+{% endblock %}
+
+
 {% block content %}
-<h1 class="mb-4">My Subscription</h1>
+
 
 <div class="card p-4 mb-4">
     <h4>User Information</h4>

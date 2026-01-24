@@ -7,7 +7,7 @@
 {{ block.super }}
 <style>
     body {
-        background-color: rgb(84, 204, 110);
+        background-color: rgba(146, 203, 86, 0.84);
     }
 
     .checkout-title {
@@ -17,9 +17,10 @@
     .card {
         border-radius: 12px;
         box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-        border: none;
+        border: 1px solid #0c0c0c;
     }
 
+   
     .form-label {
         font-weight: 500;
     }
@@ -65,39 +66,15 @@
                         <label class="form-label">{{ form.address.label_tag }}</label>
                         {{ form.address }}
                     </div>
-
-                    <hr class="my-4 border-2">
-
-                    <h5 class="mb-4">Card Details</h5>
-
-                    <div class="mb-3">
-                        <label class="col-sm-2 col-md-4 form-label">{{ form.cardholder_name.label_tag }}</label>
-                        {{ form.cardholder_name }}
+                    <div class="alert alert-info mt-3">
+                        🔒 Payment details will be securely entered on Stripe.
+                        <br>
+                        We never store your card information.
                     </div>
-
-                    <div class="mb-3">
-                        <label class="col-sm-2 col-md-4 form-label">{{ form.card_number.label_tag }}</label>
-                        {{ form.card_number }}
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">{{ form.expiry_month.label_tag }}</label>
-                            {{ form.expiry_month }}
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">{{ form.expiry_year.label_tag }}</label>
-                            {{ form.expiry_year }}
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label">{{ form.cvv.label_tag }}</label>
-                            {{ form.cvv }}
-                        </div>
+                    
                     </div>
                 </div>
-            </div>
+            
 
             <!-- RIGHT: ORDER SUMMARY -->
             <div class="col-lg-5">
@@ -124,11 +101,11 @@
                     </div>
 
                     <button type="submit" class="btn btn-success btn-lg w-100">
-                        Pay Now
+                        Confirm & Pay with Stripe
                     </button>
                 </div>
             </div>
-
+        </div>
         </div>
     </form>
 

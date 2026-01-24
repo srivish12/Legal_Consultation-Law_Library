@@ -10,23 +10,12 @@ from django.utils.timezone import now
 
 @login_required
 def subscription_list(request):
-    subscription, created = Subscription.objects.get_or_create(user=request.user, defaults={'plan': 'none'})
+    subscription, _ = Subscription.objects.get_or_create(user=request.user, defaults={'plan': 'none'})
     return render(request, 'subscriptions/subscription_list.html', {
         'current_plan': subscription.plan
     })
 
 
-
-
-@login_required
-def buy_subscription(request, plan):
-    subscription, _ = Subscription.objects.get_or_create(user=request.user, defaults={'plan': 'none'})
-
-    if plan in ['none', 'basic', 'full']:
-        subscription.plan = plan
-        subscription.save()
-
-    return redirect('subscriptions:list')
 
 
 @login_required
@@ -41,25 +30,29 @@ def subscription_checkout(request, plan):
     amount = Subscription.PRICE_MAP[plan]
     payment = Payment.objects.create(
         user=request.user,
+        payment_type=Payment.SUBSCRIPTION, #important
+        subscription_plan=plan,
         package=None,
         original_amount=amount,
         discount_percent=0,
         final_amount=amount
     )
 
-    request.session['subscription_plan'] = plan
+    # Stripe checkout happens in PAYMENTS app
+
+    #request.session['subscription_plan'] = plan
 
     #  redirect to PAYMENTS app
     return redirect(
         'payments:subscription_checkout',
         payment_id=payment.id
     )
-    
+
 
 
 @login_required
 def renew_subscription(request, plan):
-    subscription = get_object_or_404(Subscription, user=request.user)
+    #subscription = get_object_or_404(Subscription, user=request.user)
     return redirect('subscriptions:checkout', plan=plan)
 
 
@@ -69,13 +62,10 @@ def my_subscription(request):
 
     bought_packages = Payment.objects.filter(
         user=request.user,
+        payment_type=Payment.CONSULTATION_PACKAGE,
         status=Payment.COMPLETED
         ).select_related( 'package__lawyer')
-      # , package__isnull=False
-    #).select_related(
-     #   'package',
-      #  'package__lawyer').order_by('-created_at')
-    
+      
     
     context = {
         'user': request.user,

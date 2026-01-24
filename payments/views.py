@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib.auth.decorators import login_required
 from urllib3 import request
 from consultation_packages.models import ConsultationPackage
@@ -8,8 +8,11 @@ from django.contrib import messages
 from datetime import timedelta
 from django.utils import timezone
 from .forms import CheckoutForm
+import stripe
+from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 
-#import stripe
+
 
 @login_required
 def checkout(request, package_id):
@@ -30,6 +33,7 @@ def checkout(request, package_id):
         form = CheckoutForm(request.POST)
 
         if form.is_valid():
+
             payment = Payment.objects.create(
                 user=request.user,
                 package=package,
@@ -41,10 +45,41 @@ def checkout(request, package_id):
                 discount_percent=discount,
                 final_amount=final_amount,
             )
+            stripe.api_key = settings.STRIPE_API_KEY
 
-            payment.mark_completed()
+            session = stripe.checkout.Session.create(
+                payment_method_types=['card'],
+                mode='payment',
+                customer_email=payment.email,
+                line_items=[{
+                    'price_data': {
+                        'currency': 'gbp',
+                        'product_data': {
+                            'name': package.title,
+                        },
+                        'unit_amount': int(final_amount * 100),
+                    },
+                    'quantity': 1,
+                }],
 
-            return redirect('payments:success', payment.id)
+                success_url=request.build_absolute_uri(
+                    reverse('payments:success', args=[payment.id])
+                ),
+
+                cancel_url=request.build_absolute_uri(
+                    reverse('payments:checkout', args=[package.id])
+                ),
+            )
+
+            payment.stripe_session_id = session.id
+            payment.save()
+
+            return redirect(session.url)
+
+
+
+            #payment.mark_completed()
+            #return redirect('payments:success', payment.id)
 
     else:
         form = CheckoutForm(
@@ -61,6 +96,7 @@ def checkout(request, package_id):
         'final_amount': final_amount,
         'subscription': subscription,
         'form': form,
+        'STRIPE_PUBLISHABLE_KEY': settings.STRIPE_PUBLISHABLE_KEY
     }
 
     return render(request, 'payments/checkout.html', context)
@@ -69,7 +105,36 @@ def checkout(request, package_id):
 @login_required
 def payment_success(request, payment_id):
     payment = get_object_or_404(Payment, id=payment_id, user=request.user)
+    stripe.api_key = settings.STRIPE_API_KEY
+    session = stripe.checkout.Session.retrieve(payment.stripe_session_id)
+
+    if session.payment_status == 'paid':
+        payment.mark_completed()
+
+        
     return render(request, 'payments/payment_success.html', {'payment': payment})
+
+
+
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
+        )
+    except Exception:
+        return HttpResponse(status=400)
+
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        payment = Payment.objects.filter(stripe_session_id=session.id).first()
+        if payment:
+            payment.mark_completed()
+
+    return HttpResponse(status=200)
 
 
 
@@ -100,28 +165,61 @@ def payment_delete(request, payment_id):
 
 @login_required
 def subscription_checkout(request, payment_id):
-	payment = get_object_or_404(Payment, id=payment_id, user=request.user)
+    payment = get_object_or_404(Payment, id=payment_id, user=request.user)
+
+    stripe.api_key = settings.STRIPE_API_KEY
+
+    session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        mode='payment',
+      
+        line_items=[{
+            'price_data': {
+                'currency': 'gbp',
+                'product_data': {
+                    'name': f"{payment.subscription_plan.capitalize()} Subscription",
+                },
+                'unit_amount': int(payment.final_amount * 100),
+            },
+            'quantity': 1,
+        }],
+        success_url=request.build_absolute_uri(
+            reverse('payments:success', args=[payment.id])
+        ),
+        cancel_url=request.build_absolute_uri(
+            reverse('subscriptions:list')
+        ),
+    )
+
+    payment.stripe_session_id = session.id
+    payment.save()
+
+    return redirect(session.url)
 
 
-	if request.method == 'POST':
-		plan = request.session.get('subscription_plan')
-		subscription, _ = Subscription.objects.get_or_create(user=request.user)
-		
-		now = timezone.now()
-		if subscription.expires_at and subscription.expires_at > now:
-			subscription.expires_at +=  timedelta(days=30)
-		else:
-			subscription.expires_at = now + timedelta(days=30)
+@login_required
+def subscription_success(request, payment_id):
+    payment = get_object_or_404(Payment, id=payment_id, user=request.user)
 
-		subscription.plan = plan
-		subscription.started_at = now
-		subscription.save()
+    import stripe
+    stripe.api_key = settings.STRIPE_API_KEY
 
-		payment.mark_completed()
+    session = stripe.checkout.Session.retrieve(payment.stripe_session_id)
 
-		return redirect('subscriptions:my_subscription')
+    if session.payment_status == 'paid':
+        payment.mark_completed()
 
+        subscription, _ = Subscription.objects.get_or_create(user=request.user)
+        now = timezone.now()
 
-	return render(request, 'payments/subscription_checkout.html', {
-		'payment': payment
-	})
+        if subscription.expires_at and subscription.expires_at > now:
+            subscription.expires_at += timezone.timedelta(days=90)
+        else:
+            subscription.started_at = now
+            subscription.expires_at = now + timezone.timedelta(days=90)
+
+        subscription.plan = payment.subscription_plan
+        subscription.save()
+
+    return redirect('subscriptions:my_subscription')
+   

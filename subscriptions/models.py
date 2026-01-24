@@ -43,7 +43,7 @@ class Subscription(models.Model):
     def activate(self, plan):
         self.plan = plan
         self.started_at = timezone.now()
-        self.expires_at = self.started_at + timedelta(days=30)
+        self.expires_at = self.started_at + timedelta(days=90)
         self.save()
 
     def deactivate(self):
