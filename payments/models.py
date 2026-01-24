@@ -25,7 +25,7 @@ class Payment(models.Model):
     SUBSCRIPTION = 'subscription'
 
     PAYMENT_TYPE_CHOICES = [
-        (CONSULTATION_PACKAGE, 'Consultation Package'),
+        (CONSULTATION_PACKAGE, 'Consultation_Package'),
         (SUBSCRIPTION, 'Subscription'),
     ]
 

@@ -37,6 +37,7 @@ def checkout(request, package_id):
             payment = Payment.objects.create(
                 user=request.user,
                 package=package,
+                
                 full_name=form.cleaned_data['full_name'],
                 email=form.cleaned_data['email'],
                 phone=form.cleaned_data['phone'],
@@ -163,38 +164,52 @@ def payment_delete(request, payment_id):
     return redirect('payments:history')
 
 
+
+
 @login_required
 def subscription_checkout(request, payment_id):
     payment = get_object_or_404(Payment, id=payment_id, user=request.user)
 
-    stripe.api_key = settings.STRIPE_API_KEY
+    if request.method == 'POST':
+        
+        stripe.api_key = settings.STRIPE_API_KEY
 
-    session = stripe.checkout.Session.create(
-        payment_method_types=['card'],
-        mode='payment',
-      
-        line_items=[{
-            'price_data': {
-                'currency': 'gbp',
-                'product_data': {
-                    'name': f"{payment.subscription_plan.capitalize()} Subscription",
+        session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            mode='payment',
+        
+            line_items=[{
+                'price_data': {
+                    'currency': 'gbp',
+                    'product_data': {
+                        'name': f"{payment.subscription_plan.capitalize()} Subscription",
+                    },
+                    'unit_amount': int(payment.final_amount * 100),
                 },
-                'unit_amount': int(payment.final_amount * 100),
-            },
-            'quantity': 1,
-        }],
-        success_url=request.build_absolute_uri(
-            reverse('payments:success', args=[payment.id])
-        ),
-        cancel_url=request.build_absolute_uri(
-            reverse('subscriptions:list')
-        ),
-    )
+                'quantity': 1,
+            }],
+            success_url=request.build_absolute_uri(
+                reverse('payments:success', args=[payment.id])
+            ),
+            cancel_url=request.build_absolute_uri(
+                reverse('subscriptions:list')
+            ),
+        )
 
-    payment.stripe_session_id = session.id
-    payment.save()
+        payment.stripe_session_id = session.id
+        payment.save()
 
-    return redirect(session.url)
+        return redirect(session.url)
+    
+    else:
+        context = {
+            'payment_id': payment_id,
+            'STRIPE_PUBLISHABLE_KEY': settings.STRIPE_PUBLISHABLE_KEY,
+            'payment': payment,
+            'final_amount': payment.final_amount,
+        }
+
+        return render(request, 'payments/subscription_checkout.html', context)
 
 
 @login_required

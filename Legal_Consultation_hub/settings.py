@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+if os.path.isfile('env.py'):
+    import env # flake8 will throw an error here, but it is necessary to import environment variables from env.py file
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -146,10 +148,6 @@ SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
 WSGI_APPLICATION = 'Legal_Consultation_hub.wsgi.application'
 
 
-STRIPE_API_KEY = "sk_test_51Sr5OkFJHhCHl7STibAH5MuNVPpO5HBoVu6LBGF7t1hPJw0hoWEVdOn9FF2yNCWuLGGJcWZG2hvNzGoUCHZPYaq0002i7Bicrr"
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51Sr5OkFJHhCHl7STRVD8Lg7VFPIu0ddKmKsnyTIMdrMMjYqFQfEJGGI9lGbAa1Iq9LpYohgRjY3MZiINpgmgZVJH00ZEwmsh63'
-STRIPE_WEBHOOK_SECRET = 'whsec_...'
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -202,6 +200,15 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
+# Stripe
+
+STRIPE_CURRENCY = 'gbp'
+STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY', '')
+STRIPE_API_KEY = os.getenv('STRIPE_API_KEY', '')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

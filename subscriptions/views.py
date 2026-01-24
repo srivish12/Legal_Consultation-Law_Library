@@ -62,7 +62,7 @@ def my_subscription(request):
 
     bought_packages = Payment.objects.filter(
         user=request.user,
-        payment_type=Payment.CONSULTATION_PACKAGE,
+        #payment_type=Payment.CONSULTATION_PACKAGE,
         status=Payment.COMPLETED
         ).select_related( 'package__lawyer')
       
