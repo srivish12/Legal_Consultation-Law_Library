@@ -57,12 +57,11 @@ def search_form(request):
 
 
 
-def lawyer_details(request, lawyer_id):
+def lawyer_details(request, slug):
     """
     Lawyer profile / detail page
     """
-    lawyer = get_object_or_404(Lawyer, pk=lawyer_id)
-
+    lawyer = get_object_or_404(Lawyer, slug=slug)
     # Fetch consultation packages for the lawyer
     packages = ConsultationPackage.objects.filter(lawyer=lawyer)    
 

@@ -3,6 +3,7 @@
 from django.db import migrations
 
 
+
 def add_packages(apps, schema_editor):
     ConsultationPackage = apps.get_model(
         'consultation_packages', 'ConsultationPackage'
@@ -13,12 +14,14 @@ def add_packages(apps, schema_editor):
             title="Quick Legal Consultation (15 mins)",
             package_type="Consultation",
             description="Ideal for quick legal questions and basic guidance over call or video.",
+            min_price=00.00,
             max_price=20.00
         ),
         ConsultationPackage(
             title="Standard Legal Consultation (30 mins)",
             package_type="Consultation",
             description="Detailed discussion with a lawyer for civil, criminal, or family matters.",
+            min_price=00.00,
             max_price=40.00
         ),
         ConsultationPackage(

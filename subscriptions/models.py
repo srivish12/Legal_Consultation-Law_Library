@@ -25,9 +25,9 @@ class Subscription(models.Model):
         FULL: 59,
         }
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='subscription')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='subscription', unique=True)
     plan = models.CharField(max_length=20, choices=SUBSCRIPTION_CHOICES, default=NONE)
-    started_at = models.DateTimeField(auto_now_add=True)
+    started_at = models.DateTimeField(null=True, blank=True)
     expires_at = models.DateTimeField(null=True, blank=True)
 
     def discount_percentage(self):
@@ -38,23 +38,28 @@ class Subscription(models.Model):
         return 0
 
     def price(self):
-        return self.PRICE_MAP(self.plan)
+        return self.PRICE_MAP[self.plan]
     
-    def activate(self, plan):
+    def activate(self, plan, duration_days=90):
+        now = timezone.now()
         self.plan = plan
-        self.started_at = timezone.now()
-        self.expires_at = self.started_at + timedelta(days=90)
-        self.save()
 
-    def deactivate(self):
-        self.plan = self.NONE
-        self.expires_at = None
+        if self.expires_at and self.expires_at > now:
+            self.expires_at += timedelta(days=duration_days)
+        else:
+            self.started_at = now
+            self.expires_at = now + timedelta(days=duration_days)
+
         self.save()
 
     def is_active(self):
-        if self.expires_at and self.expires_at > timezone.now():
-            return True
-        return False        
+        return self.expires_at and self.expires_at > timezone.now()
 
+       
     def __str__(self):
         return f"{self.user.username} - {self.get_plan_display()}"
+
+    def cleanup_duplicates(self):
+        subs = Subscription.objects.filter(user=self.user).order_by('-expires_at')
+        primary = subs.first()
+        subs.exclude(id=primary.id).delete()

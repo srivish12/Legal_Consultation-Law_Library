@@ -85,11 +85,17 @@
                 <p class="mb-3"><strong>Phone:</strong> {{ lawyer.phone }}</p>
 
                 <!-- Button stays at bottom -->
-                <a href="{% url 'lawyer_details' lawyer.pk %}"
+
+                 {% if lawyer.slug %}
+                <a href="{% url 'lawyer_details' lawyer.slug %}"
                    class="btn btn-outline-primary mt-auto">
                     View Profile
                 </a>
+                {% else %}
+                <span class="text-muted">Profile unavailable</span>
+                {% endif %}
 
+    
             </div>
         </div>
         {% endfor %}

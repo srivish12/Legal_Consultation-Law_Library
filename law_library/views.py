@@ -16,6 +16,7 @@ def book_list(request):
             Q(title__icontains=query) |
             Q(author__icontains=query)
         )
+   
 
     # Filter by subject (exact match recommended)
     if subject:

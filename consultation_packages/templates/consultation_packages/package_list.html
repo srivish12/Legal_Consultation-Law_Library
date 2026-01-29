@@ -57,6 +57,10 @@ Consultation Packages
                     <h5 class="card-title fw-semibold">
                         {{ package.title }}
                     </h5>
+                    
+                    {% if package.lawyer %}
+                    <p><strong>Lawyer:</strong> {{ package.lawyer.name }}</p>
+                    {% endif %}
 
                     <p class="card-text text-muted mb-2">
                         {{ package.get_package_type_display }}

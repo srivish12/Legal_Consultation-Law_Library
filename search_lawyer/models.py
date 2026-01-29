@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.utils.text import slugify
 
 
 User = get_user_model()
@@ -42,6 +43,15 @@ class Lawyer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='lawyer_profile', null=True, blank=True)
     name = models.CharField(max_length=255)
     lawyer_type = models.CharField(max_length=20, choices=LAWYER_TYPE_CHOICES, blank=True, null=True)
+    slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
+
+
+     # other fields...
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
 
     # solicitor-specific

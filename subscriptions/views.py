@@ -37,11 +37,7 @@ def subscription_checkout(request, plan):
         discount_percent=0,
         final_amount=amount
     )
-
-    # Stripe checkout happens in PAYMENTS app
-
-    #request.session['subscription_plan'] = plan
-
+   
     #  redirect to PAYMENTS app
     return redirect(
         'payments:subscription_checkout',
@@ -52,19 +48,22 @@ def subscription_checkout(request, plan):
 
 @login_required
 def renew_subscription(request, plan):
-    #subscription = get_object_or_404(Subscription, user=request.user)
+   # subscription = get_object_or_404(Subscription, user=request.user)
     return redirect('subscriptions:checkout', plan=plan)
 
 
 @login_required
 def my_subscription(request):
-    subscription = Subscription.objects.filter(user=request.user).first()
+    try:
+        subscription = request.user.subscription
+    except Subscription.DoesNotExist:
+        subscription = None
 
     bought_packages = Payment.objects.filter(
         user=request.user,
         #payment_type=Payment.CONSULTATION_PACKAGE,
         status=Payment.COMPLETED
-        ).select_related( 'package__lawyer')
+        ).select_related( 'package__lawyer',)
       
     
     context = {

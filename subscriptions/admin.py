@@ -6,3 +6,5 @@ from .models import Subscription
 class SubscriptionAdmin(admin.ModelAdmin):
     list_display = ('user', 'plan', 'started_at')
     list_filter = ('plan',)
+
+    

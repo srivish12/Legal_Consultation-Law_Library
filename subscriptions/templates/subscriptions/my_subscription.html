@@ -24,6 +24,29 @@
         font-weight: 500;
     }
 
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .table {
+        width: 100%;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+        .table th,
+        .table td {
+            font-size: 0.85rem;
+            padding: 0.4rem;
+        }
+
+        .card {
+            padding: 1rem;
+        }
+    }
+
+        
     
 </style>
 {% endblock %}
@@ -34,7 +57,8 @@
 <div class="container my-4 col-md-8 col-lg-6 hero-overlay p-4 text-center text-white">
     <div class="row">
         <div class=" col text-center ">
-            <h1 class="fw-bold">My Subscription</h1>
+            <!-- My Subscription(Profile)  -->
+            <h1 class="fw-bold">My Subscription Profile</h1>
             <p class="text-white">
                 View and manage your subscription details and purchased consultation packages
             </p>
@@ -58,33 +82,33 @@
 <div class="card p-4 mb-4">
     <h4>Subscription Details</h4>
 
-    <p>
-        <strong>Plan:</strong>
+    {% if subscription %}
         {{ subscription.get_plan_display }}
-    </p>
+    {% else %}
+        No Subscription
+    {% endif %}
 
-    <p>
-        <strong>Start Date:</strong>
+<p><strong>Start Date:</strong>
         {{ subscription.started_at|date:"Y-m-d" }}
     </p>
 
-    <p>
-        <strong>End Date:</strong>
+    <p><strong>End Date:</strong>
         {% if subscription.expires_at %}
-        {{ subscription.expires_at|date:"Y-m-d" }}
+            {{ subscription.expires_at|date:"Y-m-d" }}
         {% else %}
-        —
+            —
         {% endif %}
     </p>
 
-    <p>
-        <strong>Status:</strong>
-        {% if subscription.expires_at and subscription.expires_at > today %}
-        <span class="badge bg-success">Active</span>
+    <p><strong>Status:</strong>
+        {% if subscription and subscription.is_active %}
+            <span class="badge bg-success">Active</span>
         {% else %}
-        <span class="badge bg-danger">Expired</span>
+            <span class="badge bg-danger">Expired</span>
         {% endif %}
     </p>
+
+    
 
     <a href="{% url 'subscriptions:list' %}" class="btn btn-outline-primary">
         Manage Subscription
@@ -95,6 +119,9 @@
     <h4>Bought Consultation Packages</h4>
 
     {% if bought_packages %}
+    <div class="table-responsive">
+    
+
     <table class="table table-bordered mt-3">
         <thead>
             <tr>
@@ -106,7 +133,7 @@
                 <th>Purchased On</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-body">
             {% for payment in bought_packages %}
             <tr>
                 <td>{{ payment.package.lawyer.name}}</td>
@@ -119,6 +146,7 @@
             {% endfor %}
         </tbody>
     </table>
+    </div>
     {% else %}
     <p class="text-muted mt-3">No consultation packages purchased yet.</p>
     {% endif %}

@@ -11,6 +11,7 @@ from .forms import CheckoutForm
 import stripe
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.timezone import now
 
 
 
@@ -112,6 +113,21 @@ def payment_success(request, payment_id):
     if session.payment_status == 'paid':
         payment.mark_completed()
 
+     #  UPDATE SUBSCRIPTION 
+        if payment.payment_type == Payment.SUBSCRIPTION:
+            subscription, _ = Subscription.objects.get_or_create(
+                user=request.user
+            )
+
+            subscription.plan = payment.subscription_plan
+            subscription.started_at = timezone.now()
+
+            if payment.subscription_plan == 'basic':
+                subscription.expires_at = timezone.now() + timedelta(days=90)
+            elif payment.subscription_plan == 'full':
+                subscription.expires_at = timezone.now() + timedelta(days=90)
+
+            subscription.save()
         
     return render(request, 'payments/payment_success.html', {'payment': payment})
 
@@ -216,25 +232,18 @@ def subscription_checkout(request, payment_id):
 def subscription_success(request, payment_id):
     payment = get_object_or_404(Payment, id=payment_id, user=request.user)
 
-    import stripe
     stripe.api_key = settings.STRIPE_API_KEY
-
     session = stripe.checkout.Session.retrieve(payment.stripe_session_id)
 
     if session.payment_status == 'paid':
         payment.mark_completed()
 
-        subscription, _ = Subscription.objects.get_or_create(user=request.user)
-        now = timezone.now()
+        subscription, _ = Subscription.objects.get_or_create(
+            user=request.user
+        )
 
-        if subscription.expires_at and subscription.expires_at > now:
-            subscription.expires_at += timezone.timedelta(days=90)
-        else:
-            subscription.started_at = now
-            subscription.expires_at = now + timezone.timedelta(days=90)
-
-        subscription.plan = payment.subscription_plan
-        subscription.save()
+        subscription.activate(payment.subscription_plan)
+        subscription.refresh_from_db()
 
     return redirect('subscriptions:my_subscription')
-   
+

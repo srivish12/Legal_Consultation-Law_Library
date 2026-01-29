@@ -52,10 +52,12 @@
     <form method="get" class="row g-3 mb-4">
 
         <div class="col-md-4">
+            
             <input type="text" name="q" class="form-control"
                 placeholder="Search by title or author"
                 value="{{ query }}"
             >
+            
         </div>
 
         <div class="col-md-3">
@@ -91,6 +93,7 @@
     <!-- Books Grid -->
     <div class="row">
         {% for book in books %}
+            
             <div class="col-md-4 mb-4">
                 <div class="card p-3 h-100 d-flex flex-column">
 
