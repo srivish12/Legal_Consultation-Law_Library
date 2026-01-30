@@ -14,4 +14,3 @@ class SiteSettings(models.Model):
     class Meta:
         verbose_name = "Site Setting"
         verbose_name_plural = "Site Settings"
-# Create your models here.

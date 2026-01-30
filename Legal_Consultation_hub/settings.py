@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
+
+# Import environment variables from env.py file
 if os.path.isfile('env.py'):
     import env # flake8 will throw an error here, but it is necessary to import environment variables from env.py file
 
@@ -157,6 +160,11 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+#DATABASES = {
+ #    'default': dj_database_url.parse('postgresql://neondb_owner:npg_4wvd0bxzIiSV@ep-steep-morning-ag670imh.c-2.eu-central-1.aws.neon.tech/lint_spent_given_44361')
+ #}
+    
 
 
 # Password validation
