@@ -1,0 +1,1 @@
+web: gunicorn Legal_Consultation_hub.wsgi:application
