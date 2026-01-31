@@ -10,9 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-from pathlib import Path
 import os
 import dj_database_url
+from pathlib import Path
 
 # Import environment variables from env.py file
 if os.path.isfile('env.py'):
@@ -76,7 +76,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
+    'allauth.account.middleware.AccountMiddleware', #
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -86,7 +86,12 @@ ROOT_URLCONF = 'Legal_Consultation_hub.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [
+            #BASE_DIR / 'templates'
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates', 'allauth'),
+            
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -213,11 +218,15 @@ USE_I18N = True
 
 USE_TZ = True
 
+USE_L10N = True # for proper date formatting based on locale
+
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 # Media files
@@ -251,6 +260,8 @@ if 'USE_AWS' in os.environ:
 STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY', '')
 STRIPE_API_KEY = os.getenv('STRIPE_API_KEY', '')
+STRIPE_WEBHOOK_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET', '')
+
 
 
 # Default primary key field type
