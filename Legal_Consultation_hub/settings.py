@@ -90,7 +90,7 @@ TEMPLATES = [
             #BASE_DIR / 'templates'
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'templates', 'allauth'),
-            os.path.join(BASE_DIR, 'templates', 'admin'),
+           
             
             ],
         'APP_DIRS': True,
@@ -167,12 +167,6 @@ WSGI_APPLICATION = 'Legal_Consultation_hub.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-#DATABASES = {
- #   'default': {
-  #      'ENGINE': 'django.db.backends.sqlite3',
-   #     'NAME': BASE_DIR / 'db.sqlite3',
-    #}
-#}
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
