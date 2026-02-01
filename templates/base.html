@@ -9,10 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Connect with expert lawyers, explore legal packages, and access a comprehensive law library.">
-    <meta name="keywords" content="Legal Consultation, Find Lawyer, Law Packages, Law Library, Legal Advice">
+    <meta name="keywords" content="Legal Consultation, Find Lawyer, Law Packages, Law Library, Legal Advice, Good Lawyers, Affordable Lawyers, 
+    Solicitors in Yorkshire, Advocates, Legal Services, Online Legal Help, Legal Documents, Court Representation, Wills and Deeds,
+    Business Contracts, Family Law, Criminal Defence, Legal Resources, Legal Support, Legal Guidance, Legal Consultation Hub,child custody, divorce, 
+    top-rated lawyers, legal representation, legal documents, legal advice, legal platform, free law library, affordable legal services, trusted lawyers, 
+    legal assistance, legal consultation online, legal expertise, legal solutions, legal professionals, baristors, baristors near me, 
+    solicitors near me, legal aid, legal consultation services, i need a solicitor, hire a lawyer, i need a criminal lawyer, best solicitors in yorkshire,
+    magistrates court lawyer, high court baristors, free legal advice">
     {% endblock %}
-
-    <title>{% block title %}Legal Consultation Hub{% endblock %}</title>
+ 
 
     {% block corecss %}
     <!-- Bootstrap 5 CSS -->
@@ -72,22 +77,17 @@
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Footer 
-    <footer class="bg-dark text-light py-3 mt-4">
-        <div class="container text-center">
-            <p class="m-0">© 2025 LegalHub — All rights reserved.</p>
-        </div>
-    </footer>-->
+    <!-- Footer -->
 
     <footer class="bg-dark text-light py-4 mt-5">
         <div class="container text-center">
             <p>Follow us on:</p>
 
-            {% if settings.facebook %}<a href="{{ settings.facebook }}" target="_blank" class="text-light"><i class="fab fa-facebook fa-lg mx-2"></i></a>{% endif %}
-            {% if settings.twitter %}<a href="{{ settings.twitter }}" target="_blank" class="text-light"><i class="fab fa-twitter fa-lg mx-2"></i></a>{% endif %}
-            {% if settings.linkedin %}<a href="{{ settings.linkedin }}" target="_blank" class="text-light"><i class="fab fa-linkedin fa-lg mx-2"></i></a>{% endif %}
-            {% if settings.instagram %}<a href="{{ settings.instagram }}" target="_blank" class="text-light"><i class="fab fa-instagram fa-lg mx-2"></i></a>{% endif %}
-            {% if settings.youtube %}<a href="{{ settings.youtube }}" target="_blank" class="text-light"><i class="fab fa-youtube fa-lg mx-2"></i></a>{% endif %}
+            {% if settings.facebook %}<a href="{{ settings.facebook }}" target="_blank" rel="noopener" class="text-light"><i class="fab fa-facebook fa-lg mx-2"></i></a>{% endif %}
+            {% if settings.twitter %}<a href="{{ settings.twitter }}" target="_blank" rel="noopener" class="text-light"><i class="fab fa-twitter fa-lg mx-2"></i></a>{% endif %}
+            {% if settings.linkedin %}<a href="{{ settings.linkedin }}" target="_blank" rel="noopener" class="text-light"><i class="fab fa-linkedin fa-lg mx-2"></i></a>{% endif %}
+            {% if settings.instagram %}<a href="{{ settings.instagram }}" target="_blank" rel="noopener" class="text-light"><i class="fab fa-instagram fa-lg mx-2"></i></a>{% endif %}
+            {% if settings.youtube %}<a href="{{ settings.youtube }}" target="_blank" rel="noopener" class="text-light"><i class="fab fa-youtube fa-lg mx-2"></i></a>{% endif %}
            
             <p class="m-0">© 2025 LegalHub — All rights reserved.</p>
 
