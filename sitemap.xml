@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/search/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/subscriptions/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/subscriptions/my_subscription/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/david-aris-esq/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/david-sterling/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/dr-aris-varma/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/elena-thorne/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/elena-vance/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/elias-thorne-sc-senior-counsel/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/james-t-vance/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/jayantha-bandaesq/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/julian-vane/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/julianna-moretti/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/katherine-sterling/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/marcus-chen/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/marcus-thorne/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/maya-al-khoury/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/robert-rob-miller/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/sara-j-miller/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/search_lawyer/sarah-jenkins/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/1/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/2/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/6/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/7/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/10/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/9/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/8/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/11/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/12/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/13/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/14/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/15/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/16/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/17/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/19/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/20/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/21/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/22/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/consultation_packages/23/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/1/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/2/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/3/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/4/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/5/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/6/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/7/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/8/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/9/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/10/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/11/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/12/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/13/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/14/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/15/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/law_library/16/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fsubscriptions%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fsubscriptions%2Fmy_subscription%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/19/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/15/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/23/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/14/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/17/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/22/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/13/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/21/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/8/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/20/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/10/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/9/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/16/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/7/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/6/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/12/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/11/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/1/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=/payments/checkout/2/</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fsubscriptions%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fsubscriptions%2Fmy_subscription%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F19%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F15%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F23%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F14%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F17%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F22%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F13%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F21%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F8%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F20%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F10%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F9%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F16%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F7%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F6%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F12%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F11%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F1%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/signup/?next=%2Fpayments%2Fcheckout%2F2%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F19%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F15%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F23%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F14%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F17%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F22%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F13%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F21%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F8%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F20%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F10%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F9%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F16%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F7%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F6%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F12%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F11%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F1%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://legal-consultation-hub-6742f22a8314.herokuapp.com/accounts/login/?next=%2Fpayments%2Fcheckout%2F2%2F</loc>
+  <lastmod>2026-02-01T23:12:18+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+
+
+</urlset>

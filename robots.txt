@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /env.py/
+Sitemap: https://legal-consultation-hub-6742f22a8314.herokuapp.com/Sitemap.xml
