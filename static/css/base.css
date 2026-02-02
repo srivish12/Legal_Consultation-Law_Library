@@ -10,6 +10,8 @@ body {
 .navbar-brand {
     font-weight: 600;
     letter-spacing: 0.5px;
+    font-size: 1.5rem;
+
 }
 
 
@@ -60,11 +62,14 @@ footer {
 
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
+    
     .header-container {
         padding-top: 116px;
+        
     }
-
+    
     body {
         height: calc(100vh - 116px);
     }
+
 }
