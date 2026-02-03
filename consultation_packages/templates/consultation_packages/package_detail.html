@@ -5,18 +5,9 @@
 {{ package.title }}
 {% endblock %}
 
-{% block corecss %}
-{{ block.super }}
-<style>
-    body {
-        background-color:rgb(183, 98, 52);
-    }
-     .card {
-        border-radius: 12px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-        border: 1px solid #0c0c0c;
-    }
-</style>
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'consultation_packages/css/p_detail.css' %}">
+    
 {% endblock %}
 
 {% block content %}
