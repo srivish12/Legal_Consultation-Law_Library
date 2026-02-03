@@ -154,6 +154,10 @@ SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
 
 
 facebook = os.getenv("FACEBOOK_URL")
+twitter = os.getenv("TWITTER_URL")
+linkedin = os.getenv("LINKEDIN_URL")
+instagram = os.getenv("INSTAGRAM_URL")
+youtube = os.getenv("YOUTUBE_URL")
 # WSGI application
 WSGI_APPLICATION = 'Legal_Consultation_hub.wsgi.application'
 
