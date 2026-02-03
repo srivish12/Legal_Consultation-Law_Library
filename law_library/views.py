@@ -16,7 +16,6 @@ def book_list(request):
             Q(title__icontains=query) |
             Q(author__icontains=query)
         )
-   
 
     # Filter by subject (exact match recommended)
     if subject:
@@ -60,4 +59,3 @@ def book_list(request):
 def book_detail(request, pk):
     book = get_object_or_404(LawBook, pk=pk)
     return render(request, 'book_detail.html', {'book': book})
-

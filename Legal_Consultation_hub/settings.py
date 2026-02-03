@@ -218,6 +218,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # AWS S3 settings for static and media files
+
 if 'USE_AWS' in os.environ:
 
      # Cache control

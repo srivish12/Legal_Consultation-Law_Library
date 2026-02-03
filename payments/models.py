@@ -5,6 +5,7 @@ from decimal import Decimal
 from subscriptions.models import Subscription
 from consultation_packages.models import ConsultationPackage
 
+
 class Payment(models.Model):
     PAYMENT_METHODS = [
         ('credit_card', 'Credit Card'),
@@ -51,8 +52,6 @@ class Payment(models.Model):
         on_delete=models.CASCADE, null=True, blank=True
     )
 
-
-
     stripe_session_id = models.CharField(max_length=255, blank=True, null=True)
 
     method = models.CharField(max_length=20, choices=PAYMENT_METHODS)
@@ -83,8 +82,6 @@ class Payment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     paid_at = models.DateTimeField(null=True, blank=True)
 
-    
-    
     def apply_subscription_discount(self):
         """
         Apply discount based on user's active subscription.
@@ -95,7 +92,7 @@ class Payment(models.Model):
             user=self.user,
             expires_at__gt=timezone.now()
         ).first()
-        
+
         if subscription:
             percent = subscription.discount_percent()
 

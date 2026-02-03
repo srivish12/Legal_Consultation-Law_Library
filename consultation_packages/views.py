@@ -5,7 +5,6 @@ from search_lawyer.models import Lawyer
 from .forms import ConsultationPackageForm
 
 
-
 @staff_member_required
 def create_package(request):
     if request.method == 'POST':
@@ -21,12 +20,9 @@ def create_package(request):
     })
 
 
-
 def package_list(request):
     packages = ConsultationPackage.objects.all()
     return render(request, 'consultation_packages/package_list.html', {'packages': packages})
-
-
 
 
 def package_detail(request, pk, ):

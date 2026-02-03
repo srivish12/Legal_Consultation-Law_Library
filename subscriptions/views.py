@@ -7,15 +7,13 @@ from django.utils import timezone
 from django.utils.timezone import now
 
 
-
 @login_required
 def subscription_list(request):
-    subscription, _ = Subscription.objects.get_or_create(user=request.user, defaults={'plan': 'none'})
+    subscription, _ = Subscription.objects.get_or_create(
+        user=request.user, defaults={'plan': 'none'})
     return render(request, 'subscriptions/subscription_list.html', {
         'current_plan': subscription.plan
     })
-
-
 
 
 @login_required
@@ -23,21 +21,20 @@ def subscription_checkout(request, plan):
 
     if plan not in ['basic', 'full']:
         return redirect('subscriptions:list')
-    
-    subscription, _ = Subscription.objects.get_or_create(user=request.user)
 
+    subscription, _ = Subscription.objects.get_or_create(user=request.user)
 
     amount = Subscription.PRICE_MAP[plan]
     payment = Payment.objects.create(
         user=request.user,
-        payment_type=Payment.SUBSCRIPTION, #important
+        payment_type=Payment.SUBSCRIPTION,  # important
         subscription_plan=plan,
         package=None,
         original_amount=amount,
         discount_percent=0,
         final_amount=amount
     )
-   
+
     #  redirect to PAYMENTS app
     return redirect(
         'payments:subscription_checkout',
@@ -45,10 +42,9 @@ def subscription_checkout(request, plan):
     )
 
 
-
 @login_required
 def renew_subscription(request, plan):
-   # subscription = get_object_or_404(Subscription, user=request.user)
+
     return redirect('subscriptions:checkout', plan=plan)
 
 
@@ -61,11 +57,10 @@ def my_subscription(request):
 
     bought_packages = Payment.objects.filter(
         user=request.user,
-        #payment_type=Payment.CONSULTATION_PACKAGE,
+
         status=Payment.COMPLETED
-        ).select_related( 'package__lawyer',)
-      
-    
+        ).select_related('package__lawyer',)
+
     context = {
         'user': request.user,
         'subscription': subscription,
@@ -74,5 +69,3 @@ def my_subscription(request):
     }
 
     return render(request, 'subscriptions/my_subscription.html', context)
-
-

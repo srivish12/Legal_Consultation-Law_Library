@@ -8,8 +8,6 @@ class LawyerReviewForm(forms.ModelForm):
         fields = ['rating', 'comment']
 
 
-
-
 class PackageReviewForm(forms.ModelForm):
     class Meta:
         model = PackageReview

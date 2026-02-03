@@ -52,9 +52,7 @@ def search_form(request):
     Display search form
     """
 
-
     return render(request, 'search_lawyer/search_form.html')
-
 
 
 def lawyer_details(request, slug):
@@ -63,7 +61,7 @@ def lawyer_details(request, slug):
     """
     lawyer = get_object_or_404(Lawyer, slug=slug)
     # Fetch consultation packages for the lawyer
-    packages = ConsultationPackage.objects.filter(lawyer=lawyer)    
+    packages = ConsultationPackage.objects.filter(lawyer=lawyer)
 
     return render(request, 'search_lawyer/lawyer_detail.html', {
         'lawyer': lawyer,

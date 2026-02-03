@@ -12,21 +12,23 @@ class Subscription(models.Model):
     BASIC = 'basic'
     FULL = 'full'
 
-
     SUBSCRIPTION_CHOICES = [
         (NONE, 'No Subscription'),
         (BASIC, 'Basic Subscription'),
         (FULL, 'Full Subscription'),
         ]
-    
+
     PRICE_MAP = {
         NONE: 0,
         BASIC: 29,
         FULL: 59,
         }
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='subscription', unique=True)
-    plan = models.CharField(max_length=20, choices=SUBSCRIPTION_CHOICES, default=NONE)
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE,
+        related_name='subscription', unique=True)
+    plan = models.CharField(
+        max_length=20, choices=SUBSCRIPTION_CHOICES, default=NONE)
     started_at = models.DateTimeField(null=True, blank=True)
     expires_at = models.DateTimeField(null=True, blank=True)
 
@@ -39,7 +41,7 @@ class Subscription(models.Model):
 
     def price(self):
         return self.PRICE_MAP[self.plan]
-    
+
     def activate(self, plan, duration_days=90):
         now = timezone.now()
         self.plan = plan
@@ -55,7 +57,6 @@ class Subscription(models.Model):
     def is_active(self):
         return self.expires_at and self.expires_at > timezone.now()
 
-       
     def __str__(self):
         return f"{self.user.username} - {self.get_plan_display()}"
 

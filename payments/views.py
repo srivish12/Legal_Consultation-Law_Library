@@ -14,7 +14,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.timezone import now
 
 
-
 @login_required
 def checkout(request, package_id):
     package = get_object_or_404(ConsultationPackage, id=package_id)
@@ -38,7 +37,7 @@ def checkout(request, package_id):
             payment = Payment.objects.create(
                 user=request.user,
                 package=package,
-                
+
                 full_name=form.cleaned_data['full_name'],
                 email=form.cleaned_data['email'],
                 phone=form.cleaned_data['phone'],
@@ -78,11 +77,6 @@ def checkout(request, package_id):
 
             return redirect(session.url)
 
-
-
-            #payment.mark_completed()
-            #return redirect('payments:success', payment.id)
-
     else:
         form = CheckoutForm(
             initial={
@@ -113,7 +107,9 @@ def payment_success(request, payment_id):
     if session.payment_status == 'paid':
         payment.mark_completed()
 
-     #  UPDATE SUBSCRIPTION 
+
+        # updat subscription
+
         if payment.payment_type == Payment.SUBSCRIPTION:
             subscription, _ = Subscription.objects.get_or_create(
                 user=request.user
@@ -128,9 +124,8 @@ def payment_success(request, payment_id):
                 subscription.expires_at = timezone.now() + timedelta(days=90)
 
             subscription.save()
-        
-    return render(request, 'payments/payment_success.html', {'payment': payment})
 
+    return render(request, 'payments/payment_success.html', {'payment': payment})
 
 
 @csrf_exempt
@@ -154,11 +149,10 @@ def stripe_webhook(request):
     return HttpResponse(status=200)
 
 
-
-
 @login_required
 def payment_history(request):
-    payments = Payment.objects.filter(user=request.user).order_by('-created_at')
+    payments = Payment.objects.filter(
+        user=request.user).order_by('-created_at')
     return render(request, 'payments/payment_history.html', {'payments': payments})
 
 
@@ -180,20 +174,18 @@ def payment_delete(request, payment_id):
     return redirect('payments:history')
 
 
-
-
 @login_required
 def subscription_checkout(request, payment_id):
     payment = get_object_or_404(Payment, id=payment_id, user=request.user)
 
     if request.method == 'POST':
-        
+
         stripe.api_key = settings.STRIPE_API_KEY
 
         session = stripe.checkout.Session.create(
             payment_method_types=['card'],
             mode='payment',
-        
+
             line_items=[{
                 'price_data': {
                     'currency': 'gbp',
@@ -216,7 +208,7 @@ def subscription_checkout(request, payment_id):
         payment.save()
 
         return redirect(session.url)
-    
+
     else:
         context = {
             'payment_id': payment_id,
@@ -246,4 +238,3 @@ def subscription_success(request, payment_id):
         subscription.refresh_from_db()
 
     return redirect('subscriptions:my_subscription')
-
