@@ -2,14 +2,9 @@
 {% load static %}
 {% block title %}Search Lawyer{% endblock %}
 
-{% block corecss %}
-{{ block.super }}
-<style>
-    body {
-       background-color: rgb(189, 100, 52);
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'search_lawyer/css/form.css' %}">
     
-    }
-</style>
 {% endblock %}
 
 {% block content %}

@@ -3,33 +3,9 @@
 
 {% block title %}Checkout{% endblock %}
 
-{% block corecss %}
-{{ block.super }}
-<style>
-    body {
-        background-color: rgba(146, 203, 86, 0.84);
-    }
-
-    .checkout-title {
-        font-weight: 600;
-    }
-
-    .card {
-        border-radius: 12px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-        border: 1px solid #0c0c0c;
-    }
-
-   
-    .form-label {
-        font-weight: 500;
-    }
-
-    .summary-price {
-        font-size: 1.25rem;
-        font-weight: 600;
-    }
-</style>
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'payments/css/pay_checkout.css' %}">
+    
 {% endblock %}
 
 {% block content %}

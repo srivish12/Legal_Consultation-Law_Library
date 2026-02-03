@@ -3,13 +3,9 @@
 
 {% block title %}{{ lawyer.name }} | Lawyer Profile{% endblock %}
 
-{% block corecss %}
-{{ block.super }}
-<style>
-    body {
-        background-color:  rgb(189, 100, 52);
-    }
-</style>
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'search_lawyer/css/detail.css' %}">
+    
 {% endblock %}
 
 {% block content %}

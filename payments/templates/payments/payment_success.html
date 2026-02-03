@@ -3,14 +3,11 @@
 
 {% block title %}Payment Successful{% endblock %}
 
-{% block corecss %}
-{{ block.super }}
-<style>
-    body {
-        background-color: rgba(146, 203, 86, 0.84);
-    }
-</style>
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'payments/css/pay_success.css' %}">
+    
 {% endblock %}
+
 
 {% block content %}
 <div class="alert alert-success">

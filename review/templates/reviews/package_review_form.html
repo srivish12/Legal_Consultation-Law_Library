@@ -2,17 +2,10 @@
 {% load static %}
 {% block title %}Review Package{% endblock %}
 
-
-{% block corecss %}
-{{ block.super }}
-<style>
-    body {
-        background-color: rgba(146, 203, 86, 0.84);
-    }
-</style>
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'review/css/review.css' %}">
+    
 {% endblock %}
-
-
 
 {% block content %}
 <h2>Review {{ package.title }}</h2>
