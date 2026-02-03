@@ -1,0 +1,20 @@
+body {
+    background: url('/media/studing-in-library1.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.65);
+    border-radius: 1rem;
+}
+
+.feature-card {
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .15);
+}
