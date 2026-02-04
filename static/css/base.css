@@ -73,3 +73,18 @@ footer {
     }
 
 }
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+
+    footer p {
+        font-size: 0.9rem;
+    }
+
+    footer a {
+        display: inline-block;
+        margin: 0.25rem;
+    }
+}
