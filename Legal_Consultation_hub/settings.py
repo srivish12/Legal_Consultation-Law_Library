@@ -116,7 +116,22 @@ AUTHENTICATION_BACKENDS = [
 
 
 # Site ID for django-allauth
-SITE_ID = 3
+import sys
+# Default value for initial setup/migrations
+SITE_ID = 1
+
+# Automatically adjust SITE_ID based on the database content
+# This runs when the server starts up (locally or on Heroku)
+if any(x in sys.argv for x in ['runserver', 'gunicorn', 'wsgi']):
+    try:
+        from django.contrib.sites.models import Site
+        # This fetches the first available site record regardless of its ID
+        existing_site = Site.objects.first()
+        if existing_site:
+            SITE_ID = existing_site.id
+    except Exception:
+        # If the database isn't ready yet, keep the default
+        SITE_ID = 1
 
 
 # django-allauth configuration
