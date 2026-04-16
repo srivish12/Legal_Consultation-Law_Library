@@ -10,7 +10,12 @@
 
 {% block content %}
 <div class="container my-5">
-    <h2 class="mb-4 checkout-title">Checkout</h2>
+    
+     <!-- Page Heading -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold checkout-title">Secure Checkout</h2>
+        <p class="text-muted">Complete your purchase safely with Stripe</p>
+    </div>
 
     <form method="post">
         {% csrf_token %}

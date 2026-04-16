@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.text import slugify
-
+#from django.contrib.auth.models import User
 
 User = get_user_model()
 
@@ -70,7 +70,7 @@ class Lawyer(models.Model):
         upload_to='lawyers/', blank=True, null=True)
 
     is_available = models.BooleanField(default=True)
-
+    experience_years = models.PositiveIntegerField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

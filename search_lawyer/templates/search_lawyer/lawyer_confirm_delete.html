@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Delete Lawyer{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'search_lawyer/css/form.css' %}">
+    
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Delete Lawyer</h2>
+
+    <p>Are you sure you want to delete {{ lawyer.full_name }}?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">
+            Confirm Delete
+        </button>
+    </form>
+
+    <a href="{% url 'search_lawyer' %}" class="btn btn-secondary">
+        Cancel
+    </a>
+</div>
+{% endblock %}

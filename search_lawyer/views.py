@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Q
 from .models import Lawyer
 from consultation_packages.models import ConsultationPackage
-
+from .forms import LawyerForm
 
 def search_lawyer(request):
     """
@@ -67,3 +68,44 @@ def lawyer_details(request, slug):
         'lawyer': lawyer,
         'packages': packages
     })
+
+@login_required
+@permission_required('search_lawyer.add_lawyer', raise_exception=True)
+def create_lawyer(request):
+    if request.method == 'POST':
+        form = LawyerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('search_lawyer')
+    else:
+        form = LawyerForm()
+
+    return render(request, 'search_lawyer/create_lawyer.html', {'form': form})
+
+
+@login_required
+@permission_required('search_lawyer.change_lawyer', raise_exception=True)
+def edit_lawyer(request, lawyer_id):
+    lawyer = get_object_or_404(Lawyer, id=lawyer_id)
+
+    if request.method == 'POST':
+        form = LawyerForm(request.POST, instance=lawyer)
+        if form.is_valid():
+            form.save()
+            return redirect('lawyer_details', slug=lawyer.slug)
+    else:
+        form = LawyerForm(instance=lawyer)
+
+    return render(request, 'search_lawyer/lawyer_form.html', {'form': form})
+
+
+@login_required
+@permission_required('search_lawyer.delete_lawyer', raise_exception=True)
+def delete_lawyer(request, lawyer_id):
+    lawyer = get_object_or_404(Lawyer, id=lawyer_id)
+
+    if request.method == 'POST':
+        lawyer.delete()
+        return redirect('search_lawyer')
+
+    return render(request, 'search_lawyer/lawyer_confirm_delete.html', {'lawyer': lawyer})

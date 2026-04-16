@@ -34,6 +34,17 @@
                 Search choice
             </a>
         </div>
+
+        <div class="mx-4"></div> <!-- Spacer between the two cards -->
+        
+        <div class="card p-4 text-center shadow-sm">
+            <p class="fs-5 mb-3">Add your lawyer profile here?</p>
+            <a href="{% url 'create_lawyer' %}" class="btn btn-success">
+                 Add Lawyer
+            </a>
+
+        </div>
+
     </div>
 
     {% if lawyers %}
