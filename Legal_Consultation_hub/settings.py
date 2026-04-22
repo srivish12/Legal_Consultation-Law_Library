@@ -118,7 +118,7 @@ AUTHENTICATION_BACKENDS = [
 
 
 # Site ID for django-allauth
-SITE_ID = 1
+SITE_ID = 3
 
 
 # django-allauth configuration
