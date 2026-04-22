@@ -34,8 +34,8 @@ DEBUG = False #'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
     'localhost', '127.0.0.1',
-    #'legal-consultation-hub-6742f22a8314.herokuapp.com'
-    'https://legal-consultation-hub-6742f22a8314.herokuapp.com/'
+    'legal-consultation-hub-6742f22a8314.herokuapp.com'
+    
                   ]
 
 
