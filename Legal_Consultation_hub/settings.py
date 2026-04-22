@@ -30,13 +30,13 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False #'DEVELOPMENT' in os.environ
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
-    'localhost', '127.0.0.1',
+    'localhost',
+     '127.0.0.1',
     'legal-consultation-hub-6742f22a8314.herokuapp.com'
-    
-                  ]
+                 ]
 
 
 # Application definition
@@ -117,7 +117,7 @@ AUTHENTICATION_BACKENDS = [
 
 
 # Site ID for django-allauth
-SITE_ID = 3
+SITE_ID = 1
 
 
 # django-allauth configuration
