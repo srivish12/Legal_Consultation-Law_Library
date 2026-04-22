@@ -26,6 +26,9 @@
                 {{ redirect_field }}
             {% endslot %}
             {% slot actions %}
+                 {% element button href=login_url tags="outline,primary" %}
+                    {% trans "Back to Login" %}
+                {% endelement %}
                 {% element button tags="prominent,signup" type="submit" %}
                     {% trans "Sign Up" %}
                 {% endelement %}

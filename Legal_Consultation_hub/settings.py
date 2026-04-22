@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+DEBUG = 'DEVELOPMENT' in os.environ
 
 
 ALLOWED_HOSTS = [
@@ -69,6 +69,8 @@ INSTALLED_APPS = [
 
     # other apps
     'storages',
+    'crispy_forms',
+    'crispy_bootstrap5',
     ]
 
 MIDDLEWARE = [
@@ -83,6 +85,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Legal_Consultation_hub.urls'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 TEMPLATES = [
     {
