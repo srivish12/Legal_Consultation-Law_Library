@@ -40,9 +40,9 @@ footer {
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
-  .container {
-    max-width: 80%;
-  }
+    .container {
+        max-width: 80%;
+    }
 }
 
 /* fixed top navbar only on medium and up */
@@ -62,12 +62,12 @@ footer {
 
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
-    
+
     .header-container {
         padding-top: 116px;
-        
+
     }
-    
+
     body {
         height: calc(100vh - 116px);
     }
@@ -87,4 +87,13 @@ footer {
         display: inline-block;
         margin: 0.25rem;
     }
+}
+
+/* mailchimp form styles */
+
+#mc_embed_signup {
+    background: #fff;
+    clear: left;
+    font: 14px Helvetica, Arial, sans-serif;
+    width: 600px;
 }
