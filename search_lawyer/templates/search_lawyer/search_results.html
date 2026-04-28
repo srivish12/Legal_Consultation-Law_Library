@@ -4,8 +4,8 @@
 {% block title %}Search Results{% endblock %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'search_lawyer/css/results.css' %}">
-    
+<link rel="stylesheet" href="{% static 'search_lawyer/css/results.css' %}">
+
 {% endblock %}
 
 
@@ -25,7 +25,7 @@
 {% block content %}
 <div class="container my-4">
 
-    
+
     <!-- Centered Search Button Card -->
     <div class="d-flex justify-content-center my-5">
         <div class="card p-4 text-center shadow-sm">
@@ -36,11 +36,11 @@
         </div>
 
         <div class="mx-4"></div> <!-- Spacer between the two cards -->
-        
+
         <div class="card p-4 text-center shadow-sm">
             <p class="fs-5 mb-3">Add your lawyer profile here?</p>
             <a href="{% url 'create_lawyer' %}" class="btn btn-success">
-                 Add Lawyer
+                Add Lawyer
             </a>
 
         </div>
@@ -76,24 +76,23 @@
 
                 <!-- Button stays at bottom -->
 
-                 {% if lawyer.slug %}
-                <a href="{% url 'lawyer_details' lawyer.slug %}"
-                   class="btn btn-outline-primary mt-auto">
+                {% if lawyer.slug %}
+                <a href="{% url 'lawyer_details' lawyer.slug %}" class="btn btn-outline-primary mt-auto">
                     View Profile
                 </a>
                 {% else %}
                 <span class="text-muted">Profile unavailable</span>
                 {% endif %}
 
-    
+
             </div>
         </div>
         {% endfor %}
     </div>
     {% else %}
-        <div class="alert alert-warning text-center">
-            No lawyers found matching your criteria.
-        </div>
+    <div class="alert alert-warning text-center">
+        No lawyers found matching your criteria.
+    </div>
     {% endif %}
 
     <!-- Bottom Search Button Card -->

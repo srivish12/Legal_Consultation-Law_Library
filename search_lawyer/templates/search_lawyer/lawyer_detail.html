@@ -4,8 +4,8 @@
 {% block title %}{{ lawyer.name }} | Lawyer Profile{% endblock %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'search_lawyer/css/detail.css' %}">
-    
+<link rel="stylesheet" href="{% static 'search_lawyer/css/detail.css' %}">
+
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,8 @@
                 </div>
                 <div>
                     {% if lawyer.profile_picture %}
-                        <img src="{{ lawyer.profile_picture.url }}" alt="{{ lawyer.name }}" class="img-thumbnail" style="width: 120px; height: 120px; border-radius: 25%; object-fit: cover;">
+                    <img src="{{ lawyer.profile_picture.url }}" alt="{{ lawyer.name }}" class="img-thumbnail"
+                        style="width: 120px; height: 120px; border-radius: 25%; object-fit: cover;">
                     {% endif %}
 
                 </div>
@@ -34,71 +35,71 @@
                 </div>
                 <div class="col-md-6">
                     {% if lawyer.lawyer_type == 'solicitor' and lawyer.specialty %}
-                        <p><strong>Specialty:</strong> {{ lawyer.get_specialty_display }}</p>
+                    <p><strong>Specialty:</strong> {{ lawyer.get_specialty_display }}</p>
                     {% endif %}
 
                     {% if lawyer.lawyer_type == 'advocate' and lawyer.court_level %}
-                        <p><strong>Court Level:</strong> {{ lawyer.get_court_level_display }}</p>
+                    <p><strong>Court Level:</strong> {{ lawyer.get_court_level_display }}</p>
                     {% endif %}
 
                     {% if lawyer.hourly_rate %}
-                        <p><strong>Hourly Rate:</strong> ${{ lawyer.hourly_rate }}</p>
+                    <p><strong>Hourly Rate:</strong> ${{ lawyer.hourly_rate }}</p>
                     {% endif %}
                 </div>
             </div>
-           
+
 
             <!-- Bio -->
             {% if lawyer.bio %}
-                <div class="mb-4">
-                    <h5>About</h5>
-                    <p>{{ lawyer.bio }}</p>
-                </div>
+            <div class="mb-4">
+                <h5>About</h5>
+                <p>{{ lawyer.bio }}</p>
+            </div>
             {% endif %}
 
             <!-- Consultation Packages -->
             <div>
                 <h5>Consultation Packages</h5>
-                
+
 
                 {% for package in packages %}
-                    <div class="card p-3 mb-3">
-                        <h5>{{ package.title }}</h5>
-                        <p>{{ package.description }}</p>
-                        <p>
-                            <strong>Fee:</strong>
-                            {% if package.min_price == package.max_price %}
-                                £{{ package.min_price }}
-                            {% else %}
-                                £{{ package.min_price }} – £{{ package.max_price }}
-                            {% endif %}                        
+                <div class="card p-3 mb-3">
+                    <h5>{{ package.title }}</h5>
+                    <p>{{ package.description }}</p>
+                    <p>
+                        <strong>Fee:</strong>
+                        {% if package.min_price == package.max_price %}
+                        £{{ package.min_price }}
+                        {% else %}
+                        £{{ package.min_price }} – £{{ package.max_price }}
+                        {% endif %}
 
-                        </p>
-                            <a href="{% url 'payments:checkout' package.id %}" class="btn btn-success">
-                                     Book Consultation
-                             </a>
-                
-                    </div>
+                    </p>
+                    <a href="{% url 'payments:checkout' package.id %}" class="btn btn-success">
+                        Book Consultation
+                    </a>
+
+                </div>
                 {% empty %}
-                    <p class="text-muted">No consultation packages available for this lawyer.</p>
+                <p class="text-muted">No consultation packages available for this lawyer.</p>
                 {% endfor %}
 
 
-            <!-- Actions -->
-            <div class="d-flex justify-content-between">
-                <a href="{% url 'search_lawyer' %}" class="btn btn-secondary">
-                    ← Back to Search
-                </a>
+                <!-- Actions -->
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'search_lawyer' %}" class="btn btn-secondary">
+                        ← Back to Search
+                    </a>
 
-                <a href="{% url 'edit_lawyer' lawyer.id %}" class="btn btn-warning">
-                    Edit Profile
-                </a>
+                    <a href="{% url 'edit_lawyer' lawyer.id %}" class="btn btn-warning">
+                        Edit Profile
+                    </a>
 
-                <a href="{% url 'delete_lawyer' lawyer.id %}" class="btn btn-danger">
-                    Delete Profile
-                </a>
+                    <a href="{% url 'delete_lawyer' lawyer.id %}" class="btn btn-danger">
+                        Delete Profile
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
-{% endblock %}
+    {% endblock %}

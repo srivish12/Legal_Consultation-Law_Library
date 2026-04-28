@@ -5,6 +5,7 @@ from .models import Lawyer
 from consultation_packages.models import ConsultationPackage
 from .forms import LawyerForm
 
+
 def search_lawyer(request):
     """
     Search and filter lawyers
@@ -69,6 +70,7 @@ def lawyer_details(request, slug):
         'packages': packages
     })
 
+
 @login_required
 @permission_required('search_lawyer.add_lawyer', raise_exception=True)
 def create_lawyer(request):
@@ -108,4 +110,6 @@ def delete_lawyer(request, lawyer_id):
         lawyer.delete()
         return redirect('search_lawyer')
 
-    return render(request, 'search_lawyer/lawyer_confirm_delete.html', {'lawyer': lawyer})
+    return render(
+        request, 'search_lawyer/lawyer_confirm_delete.html',
+        {'lawyer': lawyer})
